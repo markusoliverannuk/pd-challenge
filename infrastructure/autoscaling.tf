@@ -8,7 +8,7 @@ resource "aws_autoscaling_group" "app" {
     id      = aws_launch_template.app.id
     version = "$Latest"
   }
-  target_group_arns = [aws_lb_target_group.app.arn]
+  target_group_arns = [aws_lb_target_group.app_https.arn]
 
   tag {
     key                 = "Name"

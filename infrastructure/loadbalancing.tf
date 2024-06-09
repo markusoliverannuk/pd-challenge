@@ -26,7 +26,7 @@ resource "aws_lb_listener" "https_listener" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:905418180482:certificate/17cd43f5-3c7c-4736-9f24-953898937a40"
+  certificate_arn   = aws_acm_certificate.api_challenge_cert.arn
 
   default_action {
     type             = "forward"
@@ -67,15 +67,4 @@ resource "aws_lb_target_group" "app-tg-https" {
   #   healthy_threshold  = 3
   #   unhealthy_threshold = 3
   # }
-}
-
-resource "aws_route53_record" "lb_record" {
-  zone_id = var.zone_id  
-  name    = "api-pd-challenge.techwithmarkus.com"
-  type    = "A"
-  alias {
-    name                   = aws_lb.app.dns_name
-    zone_id                = aws_lb.app.zone_id
-    evaluate_target_health = true
-  }
 }

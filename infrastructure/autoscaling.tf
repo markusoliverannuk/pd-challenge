@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "app" {
-# we can modify the desired, min and max values from variables.tf
+# we can modify the desired, min and max values from variables.tf!
   desired_capacity     = var.asg_desired_ec2 
   max_size             = var.asg_max_ec2
   min_size             = var.asg_min_ec2

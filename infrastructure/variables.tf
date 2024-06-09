@@ -19,6 +19,12 @@ variable "zone_id" {
 
 }
 
+variable "record_name" {
+  description = "hosted zone record name / subdomain value for certs"
+  default     = "api-challenge.techwithmarkus.com"
+
+}
+
 variable "asg_min_ec2" {
   description = "minimum number of instances"
   default     = 1

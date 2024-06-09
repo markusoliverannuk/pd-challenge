@@ -46,6 +46,7 @@ resource "aws_launch_template" "app" {
 
   user_data = filebase64("userdata.sh")
 
+
   lifecycle {
     create_before_destroy = true
   }

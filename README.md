@@ -10,17 +10,17 @@ I've divided this into 3 main sectors
 
 ![App Screenshot](schemas/architecture.png)
 
-The whole infrastructure is written as code on <b>Terraform</b> for AWS. It consists of (not in any particular order):
-• Hosted zones, records
-• ACM Certs for AWS managed services (Application Load Balancer, Cloudfront CDN), Certbot on individual machines
-• VPC, Subnets, Security Groups, ACLs.
-• Internet Gateway
-• Application Load Balancer
-• Auto Scaling Group
-• EC2 Images running the latest version of the docker image from DockerHub, served through NGINX
-• Cloudfront CDN
-• S3 Website Endpoint
-
+The whole infrastructure is written as code on <b>Terraform</b> for AWS. It consists of (not in any particular order):<br>
+• Hosted zones, records<br>
+• ACM Certs for AWS managed services (Application Load Balancer, Cloudfront CDN), Certbot on individual machines<br>
+• VPC, Subnets, Security Groups, ACLs.<br>
+• Internet Gateway<br>
+• Application Load Balancer<br>
+• Auto Scaling Group<br>
+• EC2 Images running the latest version of the docker image from DockerHub, served through NGINX<br>
+• Cloudfront CDN<br>
+• S3 Website Endpoint<br>
+<br>
 By applying the code written for the infrastructure, we are provisioning all the necessary resources on AWS and automatically setting up the docker containers, requesting TLS certs and configuring NGINX with newly requested certs on all active EC2 machines.
 
 It starts by creating the VPC with a CIDR block of 10.0.0.0/16.

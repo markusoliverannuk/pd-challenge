@@ -17,6 +17,13 @@ resource "aws_security_group" "app_sg" {
     cidr_blocks = [var.allowed_ip] ## check @ variables.tf
   }
 
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [var.allowed_ip] ## check @ variables.tf
+  }
+
   egress {
     from_port   = 0
     to_port     = 0

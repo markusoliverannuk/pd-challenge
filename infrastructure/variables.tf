@@ -10,7 +10,7 @@ variable "instance_type" {
 
 variable "asg_desired_ec2" {
   description = "desired number of instances"
-  default     = 2
+  default     = 1
 }
 
 variable "asg_min_ec2" {

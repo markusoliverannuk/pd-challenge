@@ -31,6 +31,9 @@ resource "aws_launch_template" "app" {
   image_id          = var.machine_ami # check description and additional info from variables.tf
   instance_type     = var.instance_type # we take the instance type from variables.tf where we declared it. currently set to t2.small
   key_name          = var.key_name
+  network_interfaces {
+    associate_public_ip_address = true
+  }
 
   user_data = filebase64("userdata.sh")
 

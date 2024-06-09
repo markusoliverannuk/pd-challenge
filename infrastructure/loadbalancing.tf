@@ -16,8 +16,12 @@ resource "aws_lb_listener" "https" {
   certificate_arn   = "arn:aws:acm:us-east-1:905418180482:certificate/fcc443d1-457b-4dcb-ab56-65a0b8db4d56"
 
   default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.app_https.arn
+    type             = "redirect"
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
 }
 

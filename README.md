@@ -3,7 +3,9 @@
 
 Hello! :)
 I want to take a moment of your time to explain how this application works and how the whole infrastructure is built. 
-I've divided this into 3 main sectors
+I've divided this into 3 main sectors, Infrastructure, EC2 Startup scripts & Application code.
+
+I'll try to move from the outermost layer all the way to the logic of our application.
 
 
 ## 1. Infrastructure
@@ -46,4 +48,24 @@ Now it will be setting up the auto scaling group with a minimum amount of 1, des
 Once that is done, it updates the Route53 records for api-challenge.techwithmarkus.com to point to the IPv4 DNS of our Load Balancer.
 
 Almost done! Now all that it has left to do is create the listeners for the load balancer (2).
+<br>
 
+## 1. Startup script on EC2 machines
+
+Alright, so now that all resources are launched on AWS we have to have a way for the EC2 machine that are in the target groups, be able to serve our application. For that I've written a userdata script that each newly launched machine executes. I'll give you a quick explanation of what each part of it does :).
+
+First what it does, is it downloads package info from configured sources.
+
+Next we install Certbot, Nginx, and Docker.
+
+Now we start a new bash shell to insert a server configuration for NGINX. All it pretty much does is it tells the server to listen on port 80 (we will need this for the certbot challenge request).
+
+After that is done we reload & start nginx. Now we are able to requests certs from certbot.
+
+Moving on, we write a one-liner to request certificates for api-challenge.techwithmarkus.com in non interactive mode, and we insert all the necessary details beforehand (like the agreement to tos and our email)
+
+Now we start another shell to insert a new :443 listner into our NGINX configuration, provide it the certificates that certbot issued and tell it to forward traffic to the container port of the Docker container that we will be running shortly.
+
+Now we will reload nginx for the changes to take effect.
+
+Just in case we will make sure there is no matching container running (if there is we stop and remove it). Next, we will pull the latest docker image of mannuk24/challenge from DockerHub and run it, exposing port 8050.

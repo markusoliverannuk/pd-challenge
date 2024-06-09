@@ -8,35 +8,30 @@ resource "aws_lb" "app" {
   enable_deletion_protection = false
 }
 
-resource "aws_lb_listener" "https" {
-  load_balancer_arn = aws_lb.app.arn
-  port              = "443"
-  protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:905418180482:certificate/fcc443d1-457b-4dcb-ab56-65a0b8db4d56"
-
-  default_action {
-    type             = "redirect"
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
-
-resource "aws_lb_target_group" "app_https" {
-  name     = "app-tg-https"
-  port     = 443
-  protocol = "HTTPS"
+resource "aws_lb_target_group" "app" {
+  name     = "app-tg-http"
+  port     = 80
+  protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
 
-  health_check {
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-    timeout             = 5
-    interval            = 30
-    path                = "/"
-    matcher             = "200"
+    # health_check {
+  #   healthy_threshold   = 2
+  #   unhealthy_threshold = 2
+  #   timeout             = 5
+  #   interval            = 30
+  #   path                = "/"
+  #   matcher             = "200"
+  # }
+}
+
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = aws_lb.app.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app.arn
   }
 }
+

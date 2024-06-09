@@ -28,12 +28,13 @@ resource "aws_security_group" "app_sg" {
 resource "aws_launch_template" "app" {
   name_prefix = "app-template"
 
-  image_id          = var.machine_ami # check description and additional info from variables.tf
-  instance_type     = var.instance_type # we take the instance type from variables.tf where we declared it. currently set to t2.small
+  image_id          = var.machine_ami
+  instance_type     = var.instance_type
   key_name          = var.key_name
-  security_groups = [aws_security_group.app_sg.id]
+
   network_interfaces {
     associate_public_ip_address = true
+    security_groups            = [aws_security_group.app_sg.id]
   }
 
   user_data = filebase64("userdata.sh")

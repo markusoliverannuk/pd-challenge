@@ -2,7 +2,7 @@ resource "aws_lb" "app" {
   name               = "app-load-balancer"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.web.id]
+  security_groups    = [aws_security_group.app_sg.id]
   subnets            = [aws_subnet.subnet1.id, aws_subnet.subnet2.id] # to modify l8r
 
   enable_deletion_protection = false

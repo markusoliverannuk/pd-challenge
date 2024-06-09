@@ -10,7 +10,7 @@ I've divided this into 3 main sectors
 
 ![App Screenshot](schemas/architecture.png)
 
-The whole infrastructure is written as code on Terraform for AWS. It consists of (not in any particular order):
+The whole infrastructure is written as code on <b>Terraform</b> for AWS. It consists of (not in any particular order):
 • Hosted zones, records
 • ACM Certs for AWS managed services (Application Load Balancer, Cloudfront CDN), Certbot on individual machines
 • VPC, Subnets, Security Groups, ACLs.

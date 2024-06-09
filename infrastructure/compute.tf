@@ -1,4 +1,4 @@
-resource "aws_security_group" "web" {
+resource "aws_security_group" "app_sg" {
   name        = "traffic_rules_for_challenge"
   description = "giving traffic access"
   vpc_id            = aws_vpc.main.id
@@ -31,6 +31,7 @@ resource "aws_launch_template" "app" {
   image_id          = var.machine_ami # check description and additional info from variables.tf
   instance_type     = var.instance_type # we take the instance type from variables.tf where we declared it. currently set to t2.small
   key_name          = var.key_name
+  security_groups = [aws_security_group.app_sg.id]
   network_interfaces {
     associate_public_ip_address = true
   }

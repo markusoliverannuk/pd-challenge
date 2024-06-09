@@ -11,12 +11,6 @@ sudo docker pull mannuk24/challenge:latest
 sudo docker stop challenge
 sudo docker rm challenge
 
-sudo docker pull --platform linux/amd64 mannuk24/challenge:latest
-# running container
+sudo docker pull mannuk24/challenge:latest# running container
 #
 sudo docker run -d --name challenge -p 80:8050 mannuk24/challenge:latest
-~                                                                                                                                                             
-~                                                                                                                                                             
-~                                                                                                                                                             
-~                                                                                                                                                             
-~                                                                             

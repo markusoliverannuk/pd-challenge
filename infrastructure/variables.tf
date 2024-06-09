@@ -30,6 +30,7 @@ variable "allowed_ip" {
 
 variable "key_name" {
   description = "The name of the key pair"
+  default = "pd-challenge-kp"
 }
 
 variable "machine_ami" {

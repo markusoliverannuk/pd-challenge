@@ -1,0 +1,5 @@
+{
+    "port": ":7080",
+    "database_url": "./internal/db/database.db",
+    "database_schema": "./internal/db/schema.sql"
+}

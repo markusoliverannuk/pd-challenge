@@ -8,11 +8,24 @@ resource "aws_lb" "app" {
   enable_deletion_protection = false
 }
 
-resource "aws_lb_target_group" "app" {
-  name     = "app-tg"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.main.id # to modify l8r
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.app.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "<your-acm-certificate-arn>"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app_https.arn
+  }
+}
+
+resource "aws_lb_target_group" "app_https" {
+  name     = "app-tg-https"
+  port     = 443
+  protocol = "HTTPS"
+  vpc_id   = aws_vpc.main.id
 
   health_check {
     healthy_threshold   = 2
@@ -21,16 +34,5 @@ resource "aws_lb_target_group" "app" {
     interval            = 30
     path                = "/"
     matcher             = "200"
-  }
-}
-
-resource "aws_lb_listener" "app" {
-  load_balancer_arn = aws_lb.app.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.app.arn
   }
 }

@@ -13,6 +13,12 @@ variable "asg_desired_ec2" {
   default     = 1
 }
 
+variable "zone_id" {
+  description = "hosted zone id"
+  default     = "Z09754511Y8SW428ZP8R3"
+
+}
+
 variable "asg_min_ec2" {
   description = "minimum number of instances"
   default     = 1

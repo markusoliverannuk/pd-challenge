@@ -43,7 +43,7 @@ func Start(config *Config) error {
 
 	//new http.server with corsmiddleware
 	newHttpSrv := &http.Server{
-		Addr:    ":8050",
+		Addr:    ":8020",
 		Handler: corsMiddleware.Handler(router),
 	}
 
@@ -54,7 +54,7 @@ func Start(config *Config) error {
 	app := NewGithubAPP(os.Getenv(GITHUB_AT), store)
 
 	//Adding all users i want to scout
-	app.AddUser("flight505")
+	// app.AddUser("flight505")
 
 	//starting github
 	go app.Start()

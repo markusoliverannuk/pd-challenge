@@ -4,6 +4,8 @@ import (
 	"challenge/internal/models"
 	"challenge/internal/store"
 	"context"
+	"fmt"
+	"log"
 	"time"
 
 	"github.com/google/go-github/github"
@@ -15,6 +17,7 @@ type GitHubAPP struct {
 	AccessToken  string
 	TrackedUsers []string
 	Store        store.Store
+	GistChannel  chan GistWorkerData
 }
 
 type GistWorkerData struct {
@@ -26,59 +29,67 @@ func NewGithubAPP(access_token string, s store.Store) *GitHubAPP {
 	return &GitHubAPP{
 		AccessToken: access_token,
 		Store:       s,
+		GistChannel: make(chan GistWorkerData),
 	}
 }
 
 func (g *GitHubAPP) AddUser(username string) {
 	g.TrackedUsers = append(g.TrackedUsers, username)
+	go g.gistWorker(username)
+}
+
+func (g *GitHubAPP) IsUserTracked(username string) bool {
+	for _, user := range g.TrackedUsers {
+		if user == username {
+			return true
+		}
+	}
+	return false
 }
 
 func (g *GitHubAPP) Start() {
-	logz.Info("Starting Github Scraper...")
-	//Channel in order to get all the information from goroutines
-	gistChannel := make(chan GistWorkerData)
-
-	for _, user := range g.TrackedUsers {
-		go g.gistWorker(user, gistChannel)
-	}
-
+	fmt.Println("Starting Github Scraper...")
 	//strat tracking them every 5 seconds
-	ticker := time.NewTicker(10 * time.Second)
+	ticker := time.NewTicker(100 * time.Second)
 	defer ticker.Stop()
 
-	for gists := range gistChannel {
+	for gists := range g.GistChannel {
 		for _, gist := range gists.Gists {
 			Gist := models.Gist{
 				Username:    gists.Username,
 				Description: *gist.Description,
 			}
-			_, err := g.Store.Gists().CreateGist(Gist)
+			user_gist, err := g.Store.Gists().CreateGist(Gist)
 			if err != nil {
-				logz.Error("Error: ", err)
+				fmt.Println("Error: ", err)
 			}
 
-			for _, file := range gist.Files {
-				File := models.File{
-					Username: gists.Username,
-					Path:     *file.RawURL,
-				}
-				_, err := g.Store.Gists().CreateFile(File)
-				if err != nil {
-					logz.Error("Fail error:", err)
+			if user_gist != nil {
+				for _, file := range gist.Files {
+					logz.Info(file)
+					File := models.File{
+						Id:       user_gist.Id,
+						Username: gists.Username,
+						Path:     *file.RawURL,
+					}
+					_, err := g.Store.Gists().CreateFile(File)
+					if err != nil {
+						logz.Error("Fail error:", err)
+					}
 				}
 			}
 		}
 	}
 }
 
-func (g *GitHubAPP) gistWorker(username string, gistChannel chan<- GistWorkerData) {
+func (g *GitHubAPP) gistWorker(username string) {
 	for {
 		gists := g.getUserGists(username)
 		data := GistWorkerData{
 			Username: username,
 			Gists:    gists,
 		}
-		gistChannel <- data
+		g.GistChannel <- data
 		time.Sleep(5 * time.Second)
 	}
 }
@@ -94,8 +105,7 @@ func (g *GitHubAPP) getUserGists(username string) []*github.Gist {
 
 	gists, _, err := client.Gists.List(ctx, username, nil)
 	if err != nil {
-		logz.Error("Failed to fetch gists: %v", err)
+		log.Fatalf("Failed to fetch gists: %v", err)
 	}
-	
 	return gists
 }

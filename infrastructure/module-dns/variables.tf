@@ -8,6 +8,11 @@ variable "lb_dns" {
   type        = string
 }
 
+variable "hosted_zone_id" {
+  description = "hosted zone id"
+  type        = string
+}
+
 variable "lb_zone_id" {
   description = "load balancer zone id"
   type        = string

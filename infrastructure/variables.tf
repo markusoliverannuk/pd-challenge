@@ -13,7 +13,7 @@ variable "asg_desired_ec2" {
   default     = 1
 }
 
-variable "zone_id" {
+variable "hosted_zone_id" {
   description = "hosted zone id"
   default     = "Z09754511Y8SW428ZP8R3"
 

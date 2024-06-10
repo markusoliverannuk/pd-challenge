@@ -1,5 +1,5 @@
 resource "aws_route53_record" "lb_record" {
-  zone_id = var.lb_zone_id  
+  zone_id = var.hosted_zone_id  
   name    = var.record_name
   type    = "A"
   alias {

@@ -1,14 +1,13 @@
 module "vpc" {
   source = "./module-vpc"
-  # Pass necessary variables
   vpc_cidr = var.vpc_cidr
 }
 
 module "dns" {
   source = "./module-dns"
-  # Pass necessary variables
   record_name = var.record_name
   lb_dns = module.lb.dns_name
+  hosted_zone_id = var.hosted_zone_id
   lb_zone_id = module.lb.zone_id
 }
 
@@ -23,11 +22,11 @@ module "compute" {
 
 module "lb" {
   source = "./module-lb"
-  # Pass necessary variables
   vpc_id = module.vpc.vpc_id
   subnet1_id = module.subnets.subnet1_id
   subnet2_id = module.subnets.subnet2_id
   allowed_ip = var.allowed_inbound_ips_lb
+  acm_certificate_arn = module.acm.certificate_arn
 }
 
 module "subnets" {
@@ -46,6 +45,20 @@ module "igw" {
 module "acm" {
    source = "./module-acm"
 
-    vpc_id = module.vpc.vpc_id
-    igw_id = module.igw.igw_id
+    hosted_zone_id = var.hosted_zone_id
+    record_name = var.record_name
+}
+
+module "asg" {
+   source = "./module-asg"
+
+    asg_desired_ec2 = var.asg_desired_ec2
+    asg_min_ec2 = var.asg_min_ec2
+    asg_max_ec2 = var.asg_max_ec2
+    subnet1_id = module.subnets.subnet1_id
+    subnet2_id = module.subnets.subnet2_id
+    launch_template_id = module.compute.launch_template_id
+    target_group_http_arn = module.lb.target_group_http_arn
+    target_group_https_arn = module.lb.target_group_https_arn
+
 }

@@ -1,27 +1,11 @@
-variable "aws_region" {
-    default = "us-east-1"
-    description = "where we create our resources"
-}
 
-variable "instance_type" {
-    default ="t2.small"
-    description = "the size of the instances that will be inside the ASG"
-}
 
-variable "asg_desired_ec2" {
-  description = "desired number of instances"
-  default     = 1
-}
-
-variable "zone_id" {
+variable "hosted_zone_id" {
   description = "hosted zone id"
-  default     = "Z09754511Y8SW428ZP8R3"
-
 }
 
 variable "record_name" {
   description = "hosted zone record name / subdomain value for certs"
-  default     = "api-challenge.techwithmarkus.com"
 
 }
 

@@ -1,6 +1,4 @@
-module "acm" {
-  source      = "../module-acm"
-}
+
 
 resource "aws_lb" "app" {
   name               = "app-load-balancer"
@@ -30,7 +28,7 @@ resource "aws_lb_listener" "https_listener" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = module.acm.certificate_arn
+  certificate_arn   = var.acm_certificate_arn
 
   default_action {
     type             = "forward"

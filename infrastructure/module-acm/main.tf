@@ -9,7 +9,7 @@ resource "aws_acm_certificate" "api_challenge_cert" {
 
 
 resource "aws_acm_certificate_validation" "api_challenge_cert_validation" {
-  certificate_arn         = aws_acm_certificate.api_challenge_cert.arn
+  certificate_arn         = aws_acm_certificate.api_challenge_cert.arn // internal
   validation_record_fqdns = [for record in aws_route53_record.api_challenge_cert_validation : record.fqdn]
 }
 
@@ -22,7 +22,7 @@ resource "aws_route53_record" "api_challenge_cert_validation" {
     }
   }
 
-  zone_id = var.zone_id
+  zone_id = var.hosted_zone_id
   name    = each.value.name
   type    = each.value.type
   ttl     = 60

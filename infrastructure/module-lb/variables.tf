@@ -17,3 +17,8 @@ variable "allowed_ip" {
   description = "id of second subnet"
   type        = string
 }
+
+variable "acm_certificate_arn" {
+  description = "arn of tls cert from acm"
+  type        = string
+}

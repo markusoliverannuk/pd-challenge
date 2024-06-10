@@ -1,0 +1,5 @@
+vpc_cidr      = "10.0.0.0/16"
+allowed_ip    = "0.0.0.0/0"
+machine_ami   = "ami-04b70fa74e45c3917"
+instance_type = "t2.small"
+key_name      = "pd-challenge-kp"

@@ -35,12 +35,6 @@ variable "asg_max_ec2" {
   default     = 3
 }
 
-variable "vpc_cidr" {
-  description = "maximum number of instances"
-  type = string
-  default = "10.0.0.0/16"
-}
-
 variable "allowed_ip" {
   description = "address allowed to connect to the instance"
   default     = "0.0.0.0/0"
@@ -54,8 +48,4 @@ variable "key_name" {
 variable "machine_ami" {
   description = "the id of the machine image which we'll be using for our instnaces (ubuntu 24:04 64bit (x86))"
   default     = "ami-04b70fa74e45c3917"
-}
-
-variable "allowed_inbound_ips_lb" {
-  default = "0.0.0.0/0"
 }

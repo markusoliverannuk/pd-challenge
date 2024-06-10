@@ -1,7 +1,7 @@
 resource "aws_security_group" "app_sg" {
   name        = "traffic_rules_for_challenge"
   description = "giving traffic access"
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = var.vpc_id
 
   ingress {
     from_port   = 22

@@ -1,26 +1,85 @@
 package sqlstore
 
-import "challenge/internal/models"
+import (
+	"challenge/internal/models"
+	"database/sql"
+	"errors"
+
+	"github.com/google/uuid"
+	"gitlab.com/0x4149/logz"
+)
 
 type GistsRepository struct {
 	store *Store
 }
 
 func (g *GistsRepository) CreateGist(gist models.Gist) (*models.Gist, error) {
-	query := `INSERT OR REPLACE INTO gists (username, description) VALUES (?, ?)`
+	var username, description string
+	query := `SELECT username, description FROM gists WHERE username = ? AND description = ?`
+	err := g.store.Db.QueryRow(query, gist.Username, gist.Description).Scan(&username, &description)
 
-	_, err := g.store.Db.Exec(query, gist.Username, gist.Description)
+	if err != nil {
+		if err == sql.ErrNoRows {
+
+			query = `INSERT INTO gists (id, username, description, seen) VALUES (?, ?, ?, ?)`
+
+			gist.Id = uuid.New().String()
+			_, err = g.store.Db.Exec(query, gist.Id, gist.Username, gist.Description, 0)
+			if err != nil {
+				return nil, err
+			}
+
+			return &gist, nil
+		}
+		return nil, err // return the error if it's not ErrNoRows
+	}
+
+	return nil, errors.New("nothing new to add")
+}
+
+func (g *GistsRepository) ChangeVisibility(gist models.Gist) error {
+	logz.Info("Gist name", gist.Username, "gist description", gist.Description)
+	query := `UPDATE gists SET seen = 1 WHERE username = ? AND description = ?`
+	rows, err := g.store.Db.Exec(query, gist.Username, gist.Description)
+	if err != nil {
+		return err
+	}
+	r_affected, err := rows.RowsAffected()
+	if err != nil {
+		return err
+	}
+
+	if r_affected == 0 {
+		return errors.New("nothing on db changed")
+	}
+
+	return nil
+}
+
+func (g *GistsRepository) GetAllFiles(id string) ([]string, error) {
+	query := `SELECT path FROM files WHERE id = ?`
+	rows, err := g.store.Db.Query(query, id)
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
-	return &gist, nil
+	var files []string
+	for rows.Next() {
+		var file string
+		if err := rows.Scan(&file); err != nil {
+			return nil, err
+		}
+
+		files = append(files, file)
+	}
+	return files, nil
 }
 
 func (g *GistsRepository) CreateFile(file models.File) (*models.File, error) {
-	query := `INSERT OR REPLACE INTO files (username, path) VALUES (?, ?)`
+	query := `INSERT OR REPLACE INTO files (id, username, path) VALUES (?, ?, ?)`
 
-	_, err := g.store.Db.Exec(query, file.Username, file.Path)
+	_, err := g.store.Db.Exec(query, file.Id, file.Username, file.Path)
 	if err != nil {
 		return nil, err
 	}
@@ -28,43 +87,62 @@ func (g *GistsRepository) CreateFile(file models.File) (*models.File, error) {
 	return &file, nil
 }
 
-func (g *GistsRepository) GetUsers(username string) ([]models.Gist, error) {
-	query := `SELECT g.username, g.description, f.path FROM gists g LEFT JOIN files f ON g.username = f.username WHERE f.username = ?`
+func (g *GistsRepository) GetUsersOld(username string) ([]models.Gist, error) {
+	query := `SELECT id, username, description FROM gists WHERE username = ? AND seen = 1`
 	rows, err := g.store.Db.Query(query, username)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
-	// Map to store gists and their files
-	gistsMap := make(map[string]*models.Gist)
-
-	// Iterate over the rows
+	var gists []models.Gist
+	// iterating over the rows
 	for rows.Next() {
-		var username, description, path string
-		if err := rows.Scan(&username, &description, &path); err != nil {
+		var gist models.Gist
+		if err := rows.Scan(&gist.Id, &gist.Username, &gist.Description); err != nil {
 			return nil, err
 		}
 
-		// Check if the gist already exists in the map
-		if _, exists := gistsMap[username]; !exists {
-			gistsMap[username] = &models.Gist{
-				Username:    username,
-				Description: description,
-				Files:       []string{},
-			}
+		allFiles, err := g.GetAllFiles(gist.Id)
+		if err != nil {
+			logz.Error(err)
 		}
+		gist.Files = allFiles
 
-		// Add the file to the gist
-		if path != "" { // Ignore rows without a file
-			gistsMap[username].Files = append(gistsMap[username].Files, path)
-		}
+		gists = append(gists, gist)
+
 	}
 
-	// Convert the map to a slice
-	gists := []models.Gist{}
-	for _, gist := range gistsMap {
-		gists = append(gists, *gist)
+	return gists, nil
+}
+
+func (g *GistsRepository) GetUsersNew(username string) ([]models.Gist, error) {
+	query := `SELECT id, username, description FROM gists WHERE username = ? AND seen = 0`
+	rows, err := g.store.Db.Query(query, username)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var gists []models.Gist
+	// iterating over the rows
+	for rows.Next() {
+		var gist models.Gist
+		if err := rows.Scan(&gist.Id, &gist.Username, &gist.Description); err != nil {
+			return nil, err
+		}
+
+		allFiles, err := g.GetAllFiles(gist.Id)
+		if err != nil {
+			logz.Error(err)
+		}
+		gist.Files = allFiles
+
+		gists = append(gists, gist)
+	}
+
+	for _, gistToChange := range gists {
+		g.ChangeVisibility(gistToChange)
 	}
 
 	return gists, nil

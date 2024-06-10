@@ -1,13 +1,14 @@
 package server
 
 import (
+	"challenge/internal/models"
 	"challenge/internal/store"
 	router "challenge/pkg"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
-
-	"gitlab.com/0x4149/logz"
+	"time"
 )
 
 type Server struct {
@@ -39,23 +40,32 @@ func (s *Server) configureRouter() {
 }
 
 func (s *Server) getUserGists() http.HandlerFunc {
+	type Response struct {
+		OldGists []models.Gist `json:"old_gists"`
+		NewGists []models.Gist `json:"new_gists"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		gists, err := s.Store.Gists().GetUsers(r.PathValue("id"))
+
+		userId := r.PathValue("id")
+		//check if user is already tracked
+		if !s.GithubAPI.IsUserTracked(userId) {
+			fmt.Println("Adding user")
+			s.GithubAPI.AddUser(userId)
+			//Load first gists to db
+			time.Sleep(1000 * time.Millisecond)
+		}
+		old_gists, err := s.Store.Gists().GetUsersOld(userId)
+		if err != nil {
+			s.error(w, http.StatusBadRequest, err)
+			return
+		}
+		new_gists, err := s.Store.Gists().GetUsersNew(userId)
 		if err != nil {
 			s.error(w, http.StatusBadRequest, err)
 			return
 		}
 
-		for _, gist := range gists {
-			err := CreateDealForGist(gist)
-			if err != nil {
-				logz.Error("Error creating deal for gist: ", err)
-			} else {
-				logz.Info("Successfully created deal for gist: ", gist.Description)
-			}
-		}
-
-		s.respond(w, http.StatusOK, gists)
+		s.respond(w, http.StatusOK, &Response{OldGists: old_gists, NewGists: new_gists})
 	}
 }
 

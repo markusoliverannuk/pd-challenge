@@ -1,8 +1,8 @@
 package sqlstore
 
 import (
-	"database/sql"
 	"challenge/internal/store"
+	"database/sql"
 )
 
 type Store struct {

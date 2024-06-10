@@ -12,8 +12,10 @@ I'll try to move from the outermost layer all the way to the logic of our applic
 
 ![App Screenshot](schemas/architecture.png)
 
-The whole infrastructure is written as code on <b>Terraform</b> for AWS. It consists of (not in any particular order):<br>
+The whole infrastructure is written as code on <b>Terraform</b> for <b>AWS</b>. It consists of (not in any particular order):<br>
 • Hosted zones, records<br>
+• IAM Roles, Policies, Attachments
+• Systems Manager Parameter Store as secure storage for the Pipedrive API key and Github Access Token
 • ACM Certs for AWS managed services (Application Load Balancer, Cloudfront CDN), Certbot on individual machines<br>
 • VPC, Subnets, Security Groups, ACLs.<br>
 • Internet Gateway<br>
@@ -23,13 +25,19 @@ The whole infrastructure is written as code on <b>Terraform</b> for AWS. It cons
 • Cloudfront CDN<br>
 • S3 Website Endpoint<br>
 <br>
-By applying the code written for the infrastructure, we are provisioning all the necessary resources on AWS and automatically setting up the docker containers, requesting TLS certs and configuring NGINX with newly requested certs on all active EC2 machines.
+By applying the code written for the infrastructure (I know what you might be asking "Where is TDD for Infrastructure?!". Yes, for this project I decided not to.), we are provisioning all the necessary resources on AWS and automatically fetching the necessary env variables from <b>Parameter Store</b>setting up the <b>Docker containers</b>, <b>requesting TLS certs and <b>configuring NGINX</b> with newly requested certs on all active EC2 machines.
+
+So let's get into it..
+
+I apologize for all the incoming "Once that is done"s, "Then"s and "Next"s.
 
 It starts by creating the VPC with a CIDR block of 10.0.0.0/16.
 
 Once that is done we are requesting certificates for both the load balancer (api-challenge.techwithmarkus.com) and Cloudfront (challenge.techwithmarkus.com).
 
-Once that is done it validates the ACM Certificates through DNS by creating records in our hosted zone. Next, we get the internet gateway up and running.
+Once that is done it validates the ACM Certificates through DNS by creating records in our hosted zone.
+
+Next, we get the internet gateway up and running.
 
 Once that is done, it procceeds with the creation of two subnets in two separate availability zones, us-east-1a & b (subnets.tf).
 
@@ -50,11 +58,20 @@ Once that is done, it updates the Route53 records for api-challenge.techwithmark
 Almost done! Now all that it has left to do is create the listeners for the load balancer (2).
 <br>
 
-## 1. Startup script on EC2 machines
+## 2. Startup script on EC2 machines
+
+![Startup Script](schemas/startupscript.png.png)
 
 Alright, so now that all resources are launched on AWS we have to have a way for the EC2 machine that are in the target groups, be able to serve our application. For that I've written a userdata script that each newly launched machine executes. I'll give you a quick explanation of what each part of it does :).
 
-First what it does, is it downloads package info from configured sources.
+So it starts off by sleeping for 90 seconds, this pretty much gives enough time for the target groups and load balancer to finish configuring, otherwise we cannot respond to certbot challenges which sends a request which is eventually forwarded to the load balancer. So we need the load balancer to be in working order by that time. We can tweak it, currently set at 90 sec.
+
+So next what we do is install the aws cli.
+
+Once that is done we send requests to Systems Manager Parameter Store to get access to the Pipedrive API key and Github Access token, we query just the value and then echo them into envfile.env which we eventually will be passing into the docker container.
+
+
+Then what it does, is it downloads package info from configured sources.
 
 Next we install Certbot, Nginx, and Docker.
 
@@ -68,4 +85,4 @@ Now we start another shell to insert a new :443 listner into our NGINX configura
 
 Now we will reload nginx for the changes to take effect.
 
-Just in case we will make sure there is no matching container running (if there is we stop and remove it). Next, we will pull the latest docker image of mannuk24/challenge from DockerHub and run it, exposing port 8050.
+Just in case we will make sure there is no matching container running (if there is we stop and remove it). Next, we will pull the latest docker image of mannuk24/challenge from DockerHub, pass it the environment file that we created earlier and run it, exposing port 8050.

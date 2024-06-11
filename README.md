@@ -59,7 +59,7 @@ Almost done! Now all that it has left to do is create the listeners for the load
 <br>
 
 ## 2. Startup script on EC2 machines
-
+![Instances](schemas/instances.png)
 ![Startup Script](schemas/startupscript.png.png)
 
 Alright, so now that all resources are launched on AWS we have to have a way for the EC2 machine that are in the target groups, be able to serve our application. For that I've written a userdata script that each newly launched machine executes. I'll give you a quick explanation of what each part of it does :).

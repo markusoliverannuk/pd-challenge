@@ -48,7 +48,7 @@ func (g *GitHubAPP) IsUserTracked(username string) bool {
 }
 
 func (g *GitHubAPP) Start() {
-	fmt.Println("Starting Github Scraper...")
+	logz.Info("Starting Github Scraper...")
 	//strat tracking them every 5 seconds
 	ticker := time.NewTicker(100 * time.Second)
 	defer ticker.Stop()

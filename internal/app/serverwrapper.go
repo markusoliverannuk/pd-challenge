@@ -43,7 +43,7 @@ func Start(config *Config) error {
 
 	//new http.server with corsmiddleware
 	newHttpSrv := &http.Server{
-		Addr:    ":8020",
+		Addr:    ":8050",
 		Handler: corsMiddleware.Handler(router),
 	}
 

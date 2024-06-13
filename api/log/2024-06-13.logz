@@ -1,0 +1,68 @@
+2024/06/13 20:25:55 INFO: Starting Github Scraper... 
+2024/06/13 20:27:44 INFO: github.GistFile{Size:516702, Filename:"output_log.txt", Language:"Text", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/HugsLibRecordKeeper/0d2bef5b3e72bb5daa0c15a97daeb9d1/raw/396daff2b99457e1c0a5971b9a4bbfbde6659b95/output_log.txt"} 
+2024/06/13 20:27:46 INFO: Gist author: HugsLibRecordKeeper Gist: Rimworld output log published using HugsLib 
+2024/06/13 20:27:47 INFO: Successfully created Pipedrive deal for gist: %s Rimworld output log published using HugsLib 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:162, Filename:"server.py", Language:"Python", Type:"application/x-python", RawURL:"https://gist.githubusercontent.com/engineersamuel/fb15d4358f2fa39cab660fa0d6c2733b/raw/d420e8c125510953ac1ee42ff08ef5850288f67e/server.py"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:1721, Filename:"blog.md", Language:"Markdown", Type:"text/markdown", RawURL:"https://gist.githubusercontent.com/engineersamuel/d8999bed0bf5024e373471a805525e3f/raw/23e73766ca9936aca4806c6a92c00a8384b7a930/blog.md"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:16, Filename:"gistlog.yml", Language:"YAML", Type:"text/x-yaml", RawURL:"https://gist.githubusercontent.com/engineersamuel/d8999bed0bf5024e373471a805525e3f/raw/d607db0200fd5368b7a1d77cc9be4a547a1be4fc/gistlog.yml"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:7577, Filename:"blog.md", Language:"Markdown", Type:"text/markdown", RawURL:"https://gist.githubusercontent.com/engineersamuel/858571689dc9af802a26b63b1e8a1b56/raw/cf07ece47e92b0eab3081c8e7af0813509ae477e/blog.md"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:15, Filename:"gistlog.yml", Language:"YAML", Type:"text/x-yaml", RawURL:"https://gist.githubusercontent.com/engineersamuel/858571689dc9af802a26b63b1e8a1b56/raw/5e2372c012a16c5cf6f2ddf3b7e5a1e242e35e0e/gistlog.yml"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:478, Filename:"event.hooks.js", Language:"JavaScript", Type:"text/javascript", RawURL:"https://gist.githubusercontent.com/engineersamuel/50bdc28ca19a7343e80535abeaaea9be/raw/289b3e410d5555602b7a0a49fff24369867100bb/event.hooks.js"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:888, Filename:"web.config.xml", Language:"XML", Type:"application/xml", RawURL:"https://gist.githubusercontent.com/engineersamuel/d960b3541644843db8e2abd51540274d/raw/d8edf1dd73a21dfd3159da11e4860650a6e8bab5/web.config.xml"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:763, Filename:"Home.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/d4b3494ead3598fb6e08/raw/db21cd9158448ce2f1a4487540a7d806391f2339/Home.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:991, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/27ba0e898d263708fb8d/raw/7dd86a78708383b7b6de882568ba84841b370f96/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:188, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/74bff04eddc2e8cb3b1d/raw/67b239a00d070f313023435ff737c4be9e8060a7/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:178, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/046db306ececfd1fee73/raw/030d501e5b5ed0e477d9fd02991284b43151b9c8/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:225, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/c4f25991da2a1ba70e5c/raw/b9802614efda06fba04a703a5d612ec7e22025b4/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:341, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/a17ead40675f3242452c/raw/90f6da365a915723cac8dc7dfd0565b5517bb086/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:651, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/781910ac46bc84461f52/raw/67bed8b13f742724c7f81f69e6bf0d35460bb54d/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:148, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/8e3f518e2d621a05da36/raw/8fa4c09baa3c0da7ed978185d23377596bb7e391/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:1545, Filename:"IsotopeResponseRenderer.jsx", Language:"JavaScript", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/engineersamuel/0dce908f179e4cd5732c/raw/50b8c1231e1a7da75b8804925c6c5b6ce3b53b02/IsotopeResponseRenderer.jsx"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:372, Filename:"mkv2mp4.sh", Language:"Shell", Type:"application/x-sh", RawURL:"https://gist.githubusercontent.com/engineersamuel/27cf395ad82ae4f4c761/raw/96e3559f534eaa50397ec7ba4377427932b1f2a5/mkv2mp4.sh"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:2221, Filename:"thread_utils.py", Language:"Python", Type:"application/x-python", RawURL:"https://gist.githubusercontent.com/engineersamuel/6353669/raw/70c6b79c3d44a47ce2223be385ea8c7223a34596/thread_utils.py"} 
+2024/06/13 20:28:29 INFO: github.GistFile{Size:622, Filename:"gistfile1.html", Language:"HTML", Type:"text/html", RawURL:"https://gist.githubusercontent.com/engineersamuel/5416681/raw/41222062f7fb125c19fb3f4efd293a13ed677eae/gistfile1.html"} 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist:  
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Managing remote docker-compose with Azure DevOps Deployment Groups 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Long-term caching GraphQL queries with Webpack 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Webpack event hook to rewrite index.html 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Azure IIS static web.config 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: filter and sort 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: componentDidUpdate
+ 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: render 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: createIsotopeContainer 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: componentDidMount 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: componentWillReceiveProps 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Class def 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: shouldComponentUpdate 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: constructor 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Encode mp4 files for DLNA streaming, works with TVs, devices, and PS4 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Simple thread pool in python 
+2024/06/13 20:28:29 INFO: Gist author: engineersamuel Gist: Example knockout expressions 
+2024/06/13 20:28:30 INFO: Successfully created Pipedrive deal for gist: %s  
+2024/06/13 20:28:30 INFO: Successfully created Pipedrive deal for gist: %s Managing remote docker-compose with Azure DevOps Deployment Groups 
+2024/06/13 20:28:30 INFO: Successfully created Pipedrive deal for gist: %s Long-term caching GraphQL queries with Webpack 
+2024/06/13 20:28:31 INFO: Successfully created Pipedrive deal for gist: %s Webpack event hook to rewrite index.html 
+2024/06/13 20:28:31 INFO: Successfully created Pipedrive deal for gist: %s filter and sort 
+2024/06/13 20:28:32 INFO: Successfully created Pipedrive deal for gist: %s componentDidUpdate
+ 
+2024/06/13 20:28:32 INFO: Successfully created Pipedrive deal for gist: %s render 
+2024/06/13 20:28:32 INFO: Successfully created Pipedrive deal for gist: %s createIsotopeContainer 
+2024/06/13 20:28:33 INFO: Successfully created Pipedrive deal for gist: %s componentDidMount 
+2024/06/13 20:28:33 INFO: Successfully created Pipedrive deal for gist: %s componentWillReceiveProps 
+2024/06/13 20:28:33 INFO: Successfully created Pipedrive deal for gist: %s Class def 
+2024/06/13 20:28:34 INFO: Successfully created Pipedrive deal for gist: %s shouldComponentUpdate 
+2024/06/13 20:28:34 INFO: Successfully created Pipedrive deal for gist: %s constructor 
+2024/06/13 20:28:34 INFO: Successfully created Pipedrive deal for gist: %s Encode mp4 files for DLNA streaming, works with TVs, devices, and PS4 
+2024/06/13 20:28:34 INFO: Successfully created Pipedrive deal for gist: %s Simple thread pool in python 
+2024/06/13 20:28:35 INFO: Successfully created Pipedrive deal for gist: %s Example knockout expressions 
+2024/06/13 20:34:01 INFO: Starting a server on port  
+2024/06/13 20:34:01 INFO: Starting Github Scraper... 
+2024/06/13 20:34:19 INFO: github.GistFile{Size:1107, Filename:"gistfile1.txt", Language:"Text", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/domgom/1aece7f169d597d15dd3ce9fedc81b9b/raw/6c649b856634e31e67d81e3c655cbd98ab6adf9f/gistfile1.txt"} 
+2024/06/13 20:34:19 INFO: github.GistFile{Size:1475, Filename:"gistfile1.txt", Language:"Text", Type:"text/plain", RawURL:"https://gist.githubusercontent.com/domgom/2490db47799593c67fb8a9a4524cddfe/raw/46b3a1230563effbb0d483cc32beb14cf56dde0b/gistfile1.txt"} 
+2024/06/13 20:34:20 INFO: Gist author: domgom Gist: Avoid linkedIn dark pattern on network notifications 
+2024/06/13 20:34:20 INFO: Gist author: domgom Gist: UDA on timestamp ranges 
+2024/06/13 20:34:20 INFO: Successfully created Pipedrive deal for gist: %s Avoid linkedIn dark pattern on network notifications 
+2024/06/13 20:34:20 INFO: Successfully created Pipedrive deal for gist: %s UDA on timestamp ranges 
+2024/06/13 20:37:40 ERROR: Error loading .env file 
+2024/06/13 20:38:12 INFO: Starting Github Scraper... 

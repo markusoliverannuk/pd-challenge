@@ -12,20 +12,18 @@ I'll try to move from the outermost layer all the way to the logic of our applic
 
 ![App Screenshot](schemas/architecture.png)
 
-The whole infrastructure is written as code on <b>Terraform</b> for <b>AWS</b>. It consists of (not in any particular order):<br>
+The whole infrastructure for the API is written as code on <b>Terraform</b> for <b>AWS</b>. It consists of:<br>
 • Hosted zones, records<br>
-• IAM Roles, Policies, Attachments
-• Systems Manager Parameter Store as secure storage for the Pipedrive API key and Github Access Token
+• IAM Roles, Policies, Attachments<br>
+• Systems Manager Parameter Store as secure storage for the Pipedrive API key and Github Access Token<br>
 • ACM Certs for AWS managed services (Application Load Balancer, Cloudfront CDN), Certbot on individual machines<br>
 • VPC, Subnets, Security Groups, ACLs.<br>
 • Internet Gateway<br>
 • Application Load Balancer<br>
 • Auto Scaling Group<br>
-• EC2 Images running the latest version of the docker image from DockerHub, served through NGINX<br>
-• Cloudfront CDN<br>
-• S3 Website Endpoint<br>
+• EC2 instances running the latest version of the docker image from DockerHub, served through NGINX<br>
 <br>
-By applying the code written for the infrastructure (I know what you might be asking "Where is TDD for Infrastructure?!". Yes, for this project I decided not to.), we are provisioning all the necessary resources on AWS and automatically fetching the necessary env variables from <b>Parameter Store</b>setting up the <b>Docker containers</b>, <b>requesting TLS certs and <b>configuring NGINX</b> with newly requested certs on all active EC2 machines.
+So by applying the code written for the infrastructure (I know what you might be asking "Where is TDD for Infrastructure?!". Yes, for this project I decided not to.), we are provisioning all the necessary resources on AWS and automatically fetching the necessary env variables from <b>Parameter Store</b>setting up the <b>Docker containers</b>, <b>requesting TLS certs and <b>configuring NGINX</b> with newly requested certs on all active EC2 machines.
 
 So let's get into it..
 
@@ -85,4 +83,6 @@ Now we start another shell to insert a new :443 listner into our NGINX configura
 
 Now we will reload nginx for the changes to take effect.
 
-Just in case we will make sure there is no matching container running (if there is we stop and remove it). Next, we will pull the latest docker image of mannuk24/challenge from DockerHub, pass it the environment file that we created earlier and run it, exposing port 8050.
+Just in case we will make sure there is no matching container running (if there is we stop and remove it).
+
+Next, we will pull the latest docker image of mannuk24/challenge from DockerHub with auto-restart enabled only in case of an error exit, pass it the environment file that we created earlier and run it, exposing port 8050.

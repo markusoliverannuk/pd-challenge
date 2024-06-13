@@ -33,6 +33,6 @@ func CreatePipedriveDeal(username, description, id string) error {
 		return fmt.Errorf("error creating Pipedrive deal, received status code %d: %s", resp.StatusCode(), resp.String())
 	}
 
-	logz.Info("Successfully created Pipedrive deal for gist: %s", description)
+	logz.Info("Successfully created Pipedrive deal for gist:", description)
 	return nil
 }

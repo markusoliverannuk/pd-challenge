@@ -4,10 +4,12 @@ import (
 	"challenge/internal/models"
 	"challenge/internal/store"
 	"context"
+	"fmt"
 	"log"
 	"time"
 
 	"github.com/google/go-github/github"
+	"github.com/google/uuid"
 	"gitlab.com/0x4149/logz"
 	"golang.org/x/oauth2"
 )
@@ -102,10 +104,35 @@ func (g *GitHubAPP) getUserGists(username string) []*github.Gist {
 
 	client := github.NewClient(tc)
 
-	gists, _, err := client.Gists.List(ctx, username, nil)
-	if err != nil {
-		log.Fatalf("Failed to fetch gists: %v", err)
+	var allGists []*github.Gist
+	opts := &github.GistListOptions{
+		ListOptions: github.ListOptions{PerPage: 100},
 	}
-	//fmt.Println("Gists:", gists)
-	return gists
+
+	for {
+		gists, resp, err := client.Gists.List(ctx, username, opts)
+		if err != nil {
+			log.Fatalf("Failed to fetch gists: %v", err)
+		}
+
+		//Process each gist
+		for _, gist := range gists {
+			// Check if description is nil
+			if gist.Description == nil || *gist.Description == "" {
+				description := "untitled - " + uuid.New().String()
+				gist.Description = &description
+			}
+			fmt.Println("Gist DESCRIPTION:", gist.Description)
+
+		}
+
+		allGists = append(allGists, gists...)
+
+		if resp.NextPage == 0 {
+			break
+		}
+		opts.Page = resp.NextPage
+	}
+
+	return allGists
 }

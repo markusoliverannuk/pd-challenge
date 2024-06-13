@@ -9,6 +9,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"gitlab.com/0x4149/logz"
 )
 
 type Server struct {
@@ -50,10 +52,10 @@ func (s *Server) getUserGists() http.HandlerFunc {
 
 		// we check if user is already tracked
 		if !s.GithubAPI.IsUserTracked(userId) {
-			fmt.Println("Adding user")
+			logz.Info("Adding user")
 			s.GithubAPI.AddUser(userId)
 			// we load first gists to db
-			time.Sleep(1000 * time.Millisecond)
+			time.Sleep(7000 * time.Millisecond)
 		}
 
 		old_gists, err := s.Store.Gists().GetUsersOld(userId)
@@ -69,11 +71,13 @@ func (s *Server) getUserGists() http.HandlerFunc {
 
 		// we call CreatePipedriveDeal for each new gist
 		for _, gist := range new_gists {
-			err := CreatePipedriveDeal(gist.Username, gist.Description, gist.Id)
-			if err != nil {
-				// w log the error and continue with to next gist
-				fmt.Printf("Error creating Pipedrive deal for gist %s: %v\n", gist.Id, err)
-			}
+			go func() {
+				err := CreatePipedriveDeal(gist.Username, gist.Description, gist.Id)
+				if err != nil {
+					// w log the error and continue with to next gist
+					fmt.Printf("Error creating Pipedrive deal for gist %s: %v\n", gist.Id, err)
+				}
+			}()
 		}
 
 		s.respond(w, http.StatusOK, &Response{OldGists: old_gists, NewGists: new_gists})
@@ -81,17 +85,16 @@ func (s *Server) getUserGists() http.HandlerFunc {
 }
 
 func (s *Server) getTrackedUsers() http.HandlerFunc {
-    return func(w http.ResponseWriter, r *http.Request) {
-        // quering the database to fetch unique values from usernames
-        uniqueNames, err := s.Store.Gists().GetUniqueNames()
-        if err != nil {
-            s.error(w, http.StatusInternalServerError, err)
-            return
-        }
+	return func(w http.ResponseWriter, r *http.Request) {
+		// quering the database to fetch unique values from usernames
+		uniqueNames, err := s.Store.Gists().GetUniqueNames()
+		if err != nil {
+			s.error(w, http.StatusInternalServerError, err)
+			return
+		}
 
-        
-        s.respond(w, http.StatusOK, uniqueNames)
-    }
+		s.respond(w, http.StatusOK, uniqueNames)
+	}
 }
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {

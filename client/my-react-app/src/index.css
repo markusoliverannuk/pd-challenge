@@ -1,0 +1,206 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2d7b2f;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #218626;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+}
+
+.user-info {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.username {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.gist-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.gist-item {
+  margin-bottom: 20px;
+}
+
+.gist-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: rgb(208, 208, 208);
+}
+
+.files-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.file-link {
+  color: #00ff4c;
+  text-decoration: none;
+}
+
+.file-link:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gists-container {
+  height: 400px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.gists-list {
+  margin-top: 10px;
+}
+
+body {
+  font-family: "Georgia", serif;
+  font-weight: 700; /* Bold */
+  font-size: 16px;
+  color: rgb(183, 232, 178);
+  background-color: rgb(0, 0, 0);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700; /* Bold */
+  margin-bottom: 20px;
+}
+
+.input {
+  font-size: 16px;
+  font-weight: 700; /* Bold */
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: 700; /* Bold */
+  padding: 10px 20px;
+  background-color: rgb(183, 232, 178);
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.gists-container {
+  margin-top: 20px;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 700; /* Bold */
+}
+
+.gists-list {
+  margin-top: 10px;
+}
+
+.loading,
+.no-gists {
+  font-size: 16px;
+  font-weight: 700; /* Bold */
+  color: #666;
+}
+
+.gist-description {
+  font-size: 18px;
+  font-weight: 700; /* Bold */
+  margin-bottom: 10px;
+}
+
+.files-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.file-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.file-link:hover {
+  text-decoration: underline;
+}
+
+.description {
+  text-align: center;
+}
+
+.scrollable-content {
+  max-width: 100vw !important;
+  width: 100vw;
+    max-height: 900px; /* Adjust the height as needed */
+  overflow-x: auto;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.media-images {
+  max-width: 100%;
+}
+
+.white-ul {
+  color: white;
+}

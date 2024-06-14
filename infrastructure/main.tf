@@ -11,6 +11,10 @@ module "dns" {
   lb_zone_id = module.lb.zone_id
 }
 
+module "iam" {
+  source = "./module-iam"
+}
+
 module "compute" {
   source = "./module-compute"
   vpc_id = module.vpc.vpc_id
@@ -18,6 +22,7 @@ module "compute" {
   machine_ami = var.machine_ami
   instance_type = var.instance_type
   key_name = var.key_name
+  instance_profile = module.iam.iam_instance_profile_ec2_ssm
 }
 
 module "lb" {

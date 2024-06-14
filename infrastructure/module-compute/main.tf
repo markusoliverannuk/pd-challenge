@@ -39,12 +39,17 @@ resource "aws_launch_template" "app" {
   instance_type     = var.instance_type
   key_name          = var.key_name
 
+  iam_instance_profile {
+    name = var.instance_profile
+  }
+
+
   network_interfaces {
     associate_public_ip_address = true
     security_groups            = [aws_security_group.app_sg.id]
   }
 
-  user_data = filebase64("userdata.sh")
+  user_data = filebase64("userdata/userdata.sh")
 
 
   lifecycle {

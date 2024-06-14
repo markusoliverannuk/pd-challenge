@@ -8,3 +8,9 @@ resource "aws_route53_record" "lb_record" {
     evaluate_target_health = true
   }
 }
+
+
+
+
+
+

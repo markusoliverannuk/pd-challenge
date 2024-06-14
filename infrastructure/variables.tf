@@ -21,7 +21,7 @@ variable "hosted_zone_id" {
 
 variable "record_name" {
   description = "hosted zone record name / subdomain value for certs"
-  default     = "api-challenge.techwithmarkus.com"
+  default     = "api-scraper.techwithmarkus.com"
 
 }
 

@@ -18,6 +18,10 @@ variable "instance_type" {
   type        = string
 }
 
+variable "instance_profile" {
+  description = "instance profile configure for ec2 to access parameter store"
+}
+
 variable "key_name" {
   description = "The key pair name for SSH access"
   type        = string

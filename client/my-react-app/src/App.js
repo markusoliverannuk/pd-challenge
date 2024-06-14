@@ -142,6 +142,10 @@ function App() {
         <p>We've managed to make our way through the load balancer and have reached the EC2 instances.</p>
         <img src="/schemas/instances.png" alt="instances" className="media-images" />
         <p>Now let's see what really happens once our request reaches our EC2 instance..</p>
+        <img src="/schemas/insidemachine.png" alt="instances" className="media-images" />
+        <p>Hopefully these illustrations gave you somewhat of an understanding of how it works. As I said though, a much more detailed explanation is in the README file located inside my Github Repository.</p>
+        <p className='whitetextauthor'>- Markus</p>
+
       </div>
     </div>
   );

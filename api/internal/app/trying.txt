@@ -1,0 +1,199 @@
+:INFO: Gist author: notpushkin Gist: "Include" elements from outside to your component's flow  
+:INFO: Gist author: notpushkin Gist: untitled - 84c965043aff7ff8d6b8  
+:INFO: Gist author: notpushkin Gist: untitled - 1d022c2411198c68bc37  
+:INFO: Gist author: notpushkin Gist: untitled - 656777ba4657aff74e94  
+:INFO: Gist author: notpushkin Gist: untitled - 9275216  
+:INFO: Gist author: notpushkin Gist: A tic-tac-toe game, (almost) implemented by GitHub Copilot  
+:INFO: Gist author: notpushkin Gist: Various useful keybindings for ST3  
+:INFO: Gist author: notpushkin Gist: untitled - 038cbb73073e468778eb6a714096a990  
+:INFO: Gist author: notpushkin Gist: untitled - 7360746  
+:INFO: Gist author: notpushkin Gist: Сохраняем видео из твиттера  
+:INFO: Gist author: notpushkin Gist: untitled - 288f7b0e329687de015028fe66e07a2b  
+:INFO: Gist author: notpushkin Gist: https://github.com/tiangolo/fastapi/pull/10353  
+:INFO: Gist author: notpushkin Gist: untitled - 245cc31d2e862dfa9dee  
+:INFO: Gist author: notpushkin Gist: untitled - 00b256c89c60f1eb6d303f285db436f3  
+:INFO: Gist author: notpushkin Gist: untitled - 56d3477f0f517968daaaca287e5a3a66  
+:INFO: Gist author: notpushkin Gist: Какой ЖЭС обслуживает ваш дом в Минске  
+:INFO: Gist author: notpushkin Gist: untitled - 2f005f644e269a13ac8e  
+:INFO: Gist author: notpushkin Gist: untitled - 4e59825f2348008513280516c592c67c  
+:INFO: Gist author: notpushkin Gist: untitled - c125ba22aeb5c322e53a247d7a1dc971  
+:INFO: Gist author: notpushkin Gist: Monokai for mintty  
+:INFO: Gist author: notpushkin Gist: https://github.com/mafintosh/peerwiki/issues/2  
+:INFO: Gist author: notpushkin Gist: Double or halve stepchart BPM  
+:INFO: Gist author: notpushkin Gist: untitled - 6079a02a3f4c7d36f8b0  
+:INFO: Gist author: notpushkin Gist: untitled - 6186075d666593d78319  
+:INFO: Gist author: notpushkin Gist: The thing I use to listen to music now  
+:INFO: Gist author: notpushkin Gist: svelte-compat  
+:INFO: Gist author: notpushkin Gist: application/vnd.voc+json · A sane format for visual object classification  
+:INFO: Gist author: notpushkin Gist: untitled - 8240087  
+:INFO: Gist author: notpushkin Gist: untitled - 919b46fa876bfad2d1c9  
+:INFO: Gist author: notpushkin Gist: untitled - 62d394a54426010fe139  
+:INFO: Gist author: notpushkin Gist: untitled - 7503673  
+:INFO: Gist author: notpushkin Gist: untitled - 47705cc71728a168bc240871c7b05b52  
+:INFO: Gist author: notpushkin Gist: untitled - 6994987  
+:INFO: Gist author: notpushkin Gist: untitled - c9dcb22bb74222cc8c59404940354a14  
+:INFO: Gist author: notpushkin Gist: untitled - 56157e1bfe5a6abe1be0df7e0f7cf045  
+:INFO: Gist author: notpushkin Gist: untitled - 19ef36279c9e093f51cc6ef9268ef254  
+:INFO: Gist author: notpushkin Gist: untitled - 5177066  
+:INFO: Gist author: notpushkin Gist: Android HTML in TextView copypasta  
+:INFO: Gist author: notpushkin Gist: untitled - 8307934  
+:INFO: Gist author: notpushkin Gist: untitled - 8442998  
+:INFO: Gist author: notpushkin Gist: untitled - 5546695  
+:INFO: Gist author: notpushkin Gist: untitled - 65be950026e39fa79fb4  
+:INFO: Gist author: notpushkin Gist: untitled - 2b82c17062f756fb1fb8  
+:INFO: Gist author: notpushkin Gist: Tailscale GUI but it's an xbar app https://news.ycombinator.com/item?id=33650730  
+:INFO: Gist author: notpushkin Gist: vkspoilr.js  
+:INFO: Gist author: notpushkin Gist: untitled - de5032e8cf19cd8e7ea3  
+:INFO: Gist author: notpushkin Gist: untitled - 1f17404443d5d26f839efae55ef49432  
+:INFO: Gist author: notpushkin Gist: puush.user.js  
+:INFO: Gist author: notpushkin Gist: untitled - 606c3a79d0175d275258  
+:INFO: Gist author: notpushkin Gist: untitled - edc7760e664cb2bc04520de01aa98fcf  
+:INFO: Gist author: notpushkin Gist: untitled - 9769665  
+:INFO: Gist author: notpushkin Gist: untitled - 5a1626745100fa85bd110f047eff8444  
+:INFO: Gist author: notpushkin Gist: Шекспир и Толкин · #pstftAtGoogle  
+:INFO: Gist author: notpushkin Gist: untitled - b190865d6a6355cbcd09  
+:INFO: Gist author: notpushkin Gist: untitled - 51710009a15877b6c531  
+:INFO: Gist author: notpushkin Gist: untitled - 1feca1f7a6433a0b5c4d  
+:INFO: Gist author: notpushkin Gist: untitled - 8961156  
+:INFO: Gist author: notpushkin Gist: untitled - 44816a73e82523fb0f21c7a8d669f931  
+:INFO: Gist author: notpushkin Gist: untitled - 8904589  
+:INFO: Gist author: notpushkin Gist: untitled - 9005098  
+:INFO: Gist author: notpushkin Gist: untitled - 875b9beaff0b1a9ae9d8f85b9c63fd93  
+:INFO: Gist author: notpushkin Gist: A simple hashcash-ish thing in js  
+:INFO: Gist author: notpushkin Gist: Everlasting Summer Theme  
+:INFO: Gist author: notpushkin Gist: untitled - 52b8d378cd4c4a23d765  
+:INFO: Gist author: notpushkin Gist: untitled - 11107285  
+:INFO: Gist author: notpushkin Gist: untitled - 9767012  
+:INFO: Gist author: notpushkin Gist: untitled - 291d4fcd0118c5084109  
+:INFO: Gist author: notpushkin Gist: untitled - b3bf86e05abaeae13b3ed96c037d0bea  
+:INFO: Gist author: notpushkin Gist: untitled - 6340693  
+:INFO: Gist author: notpushkin Gist: A script for streaming from OBS Studio (https://obsproject.com/) to Icecast2  
+:INFO: Gist author: notpushkin Gist: untitled - 5527230  
+:INFO: Gist author: notpushkin Gist: untitled - 086e9a6e8ab67fa19315  
+:INFO: Gist author: notpushkin Gist: untitled - 0cb9de32eff11eef61e17eefa6012fe9  
+:INFO: Gist author: notpushkin Gist: untitled - d9ab4eb466920acc8edfeae9950ad56a  
+:INFO: Gist author: notpushkin Gist: code-server wrapper for use on localhost (WIP)  
+:INFO: Gist author: notpushkin Gist: untitled - 695e71449ac782dcb2a2982b04dcc69f  
+:INFO: Gist author: notpushkin Gist: untitled - 07a24cecbf7d3938e322  
+:INFO: Gist author: notpushkin Gist: DOTAH  
+:INFO: Gist author: notpushkin Gist: untitled - a4db66dd74abea04022555c8de8e4ddb  
+:INFO: Gist author: notpushkin Gist: untitled - 3168598  
+:INFO: Gist author: notpushkin Gist: untitled - 5de5066de6e40d79b48b  
+:INFO: Gist author: notpushkin Gist: lambda3: an easy way to write `lambda x: x > 5`  
+:INFO: Gist author: notpushkin Gist: untitled - 5398057  
+:INFO: Gist author: notpushkin Gist: untitled - e7ff88ae6d5fddb5861caf2f0f9ef0ec  
+:INFO: Gist author: notpushkin Gist: untitled - fdbba37d04a0d955b214  
+:INFO: Gist author: notpushkin Gist: untitled - 7991856  
+:INFO: Gist author: notpushkin Gist: untitled - f6bf93685f797b2b3a29  
+:INFO: Gist author: notpushkin Gist: untitled - fb22cac7dac254c06f13e95613a73904  
+:INFO: Gist author: notpushkin Gist: untitled - 74925277413e5fae38af  
+:INFO: Gist author: notpushkin Gist: untitled - 20224be747a1acd4e3b4  
+:INFO: Gist author: notpushkin Gist: :) as a Bash prompt  
+:INFO: Gist author: notpushkin Gist: untitled - 6414729  
+:INFO: Gist author: notpushkin Gist: untitled - 6f7269136c51c75716a8  
+:INFO: Gist author: notpushkin Gist: untitled - 2d10cfaf9987128f5388  
+:INFO: Gist author: notpushkin Gist: Myanimestrap: Bootstrap for MyAnimeList. Customize online at http://sassmeister.com/gist/8224235  
+:INFO: Gist author: notpushkin Gist: Go fucking work  
+:INFO: Gist author: notpushkin Gist: untitled - 5123763  
+:INFO: Gist author: notpushkin Gist: untitled - 46c9132b3130a50eff68  
+:INFO: Gist author: notpushkin Gist: arc-firefox-theme fixes  
+:INFO: Gist author: notpushkin Gist: untitled - 11259730  
+:INFO: Gist author: notpushkin Gist: untitled - 64c4433b1da717c9d0cd013dc6d02bb4  
+:INFO: Gist author: notpushkin Gist: Cancerio gets a list of members in Konfach  
+:INFO: Gist author: notpushkin Gist: untitled - 7d02838b03afa9375b5372fc8655c2d1  
+:INFO: Gist author: notpushkin Gist: For this thread: https://twitter.com/simeonvisser/status/623795533338005504  
+:INFO: Gist author: notpushkin Gist: untitled - 1cbdd3cbab0cf3570f87b7f2c0cb852d  
+:INFO: Gist author: notpushkin Gist: untitled - 5040725  
+:INFO: Gist author: notpushkin Gist: untitled - 7e8359879fd8384bee42  
+:INFO: Gist author: notpushkin Gist: untitled - 10919334  
+:INFO: Gist author: notpushkin Gist: Euler's totient function φ(n) implementation suitable for large n values (uses Euler's product formula)  
+:INFO: Gist author: notpushkin Gist: untitled - 50e08155aab7440554c0  
+:INFO: Gist author: notpushkin Gist: untitled - a98e96eee4eb2fad95b9ab24ca062665  
+:INFO: Gist author: notpushkin Gist: dman on macOS – read man pages from manpages.debian.org  
+:INFO: Gist author: notpushkin Gist: untitled - f796f7e93dc384f7495e  
+:INFO: Gist author: notpushkin Gist: untitled - 2fcc252cc2bf3d7a5404b71de9e20e66  
+:INFO: Gist author: notpushkin Gist: Spotify .repo-file for yum (Fedora)  
+:INFO: Gist author: notpushkin Gist: untitled - 10919467  
+:INFO: Gist author: notpushkin Gist: untitled - 9f72a1164cf65c143ee3  
+:INFO: Gist author: notpushkin Gist: untitled - 92f72806834d7fc8daee2ab254455ce6  
+:INFO: Gist author: notpushkin Gist: Twitter walks into a bar  
+:INFO: Gist author: notpushkin Gist: untitled - 3c7f0f3932bfa8a6387a780398b8199d  
+:INFO: Gist author: notpushkin Gist: pulseaudio-module-bluetooth with LDAC support for Ubuntu and (untested) Debian · https://files.catbox.moe/i1tsk1.deb  
+:INFO: Gist author: notpushkin Gist: untitled - 6d3da6d92878b9bf8e366fea692caeb2  
+:INFO: Gist author: notpushkin Gist: untitled - 6bfe47e4aa728406663190d000175b84  
+:INFO: Gist author: notpushkin Gist: Print Wi-Fi connection details saved in NetworkManager as a QR code  
+:INFO: Gist author: notpushkin Gist: untitled - 9210197  
+:INFO: Gist author: notpushkin Gist: https://petstore.swagger.io/?url=https://gist.githubusercontent.com/notpushkin/8dae8a485013231afa94ed45b04938a1/raw/cf55c2d568670ef016ec992b6a21c56ad7d2acb7/authzed-swagger.yaml  
+:INFO: Gist author: notpushkin Gist: authorial.js  
+:INFO: Gist author: notpushkin Gist: Clean style for https://encyclopatia.ru/ (rewrite https://encyclopatia.ru/w/css/style.css with this one)  
+:INFO: Gist author: notpushkin Gist: Extensible admin/models/list.html for Flask-Admin  
+:INFO: Gist author: notpushkin Gist: untitled - 7530059  
+:INFO: Gist author: notpushkin Gist: untitled - 10002717  
+:INFO: Gist author: notpushkin Gist: untitled - 9312691  
+:INFO: Gist author: notpushkin Gist: Docker OpenAPI schema converted from https://docs.docker.com/engine/api/v1.40.yaml for use with Swagger UI  
+:INFO: Gist author: notpushkin Gist: untitled - 4041479  
+:INFO: Gist author: notpushkin Gist: untitled - 6f774a39da3e22d0cb19  
+:INFO: Gist author: notpushkin Gist: Youtube Done Right (GPL3)  
+:INFO: Gist author: notpushkin Gist: untitled - 1ebd2cc6989a68bd93f09831bb7172fe  
+:INFO: Gist author: notpushkin Gist: untitled - f04466c3010973d8b99f2ce8d148dbaa  
+:INFO: Gist author: notpushkin Gist: untitled - 9bda2530724666b7dfd4  
+:INFO: Gist author: notpushkin Gist: RTM-CLI patch for cygwin  
+:INFO: Gist author: notpushkin Gist: untitled - 10484841  
+:INFO: Gist author: notpushkin Gist: Enhanced manpage generator for Docker (WIP prototype)  
+:INFO: Gist author: notpushkin Gist: Outline VPN server stack adapted for use with Lunni / Docker Swarm  
+:INFO: Gist author: notpushkin Gist: untitled - 2beb3abeb6d8c7d25d8504623175fffd  
+:INFO: Gist author: notpushkin Gist: untitled - 9157059  
+:INFO: Gist author: notpushkin Gist: Micro PCMS2-alike test runner  
+:INFO: Gist author: notpushkin Gist: untitled - b4f05acd3b6eb17876c2a2af9adab4d7  
+:INFO: Gist author: notpushkin Gist: My NixOS system config  
+:INFO: Gist author: notpushkin Gist: untitled - b91e7f06056259841d3f  
+:INFO: Gist author: notpushkin Gist: Firestarter is an easy script to install Firefox on Debian systems  
+:INFO: Gist author: notpushkin Gist: untitled - e80955fa844e152034cc  
+:INFO: Gist author: notpushkin Gist: Расписание для Сооли  
+:INFO: Gist author: notpushkin Gist: Sapper patch to make <base> optional (based on https://github.com/sveltejs/sapper/pull/984) - https://github.com/sveltejs/sapper/issues/228  
+:INFO: Gist author: notpushkin Gist: untitled - c794bc0918e1880b97e7  
+:INFO: Gist author: notpushkin Gist: untitled - 8565685  
+:INFO: Gist author: notpushkin Gist: untitled - 7b69fdbd444819760eb4a0d0fe6dc26d  
+:INFO: Gist author: notpushkin Gist: untitled - 10308720  
+:INFO: Gist author: notpushkin Gist: List comprehension for OCaml  
+:INFO: Gist author: notpushkin Gist: Twitter cards as a service  
+:INFO: Gist author: notpushkin Gist: untitled - 5eca9867985532cc6123f07e60ae4ee8  
+:INFO: Gist author: notpushkin Gist: untitled - 9097935  
+:INFO: Gist author: notpushkin Gist: My openbox config  
+:INFO: Gist author: notpushkin Gist: List of files apt-get tries to fetch from a repository (in the same order)  
+:INFO: Gist author: notpushkin Gist: untitled - 09a2a0921db416a8ffb92c56cfd26717  
+:INFO: Gist author: notpushkin Gist: Australis-like tabs for Lepton (https://github.com/black7375/Firefox-UI-Fix / https://waterfox.net/ default theme)  
+:INFO: Gist author: notpushkin Gist: untitled - 8e033a0a11578c672dc5200c5473dfd6  
+:INFO: Gist author: notpushkin Gist: Redirect from npm's Explore link to https://unpkg.com/browse/*/, which is available for all :sparkles:  
+:INFO: Gist author: notpushkin Gist: untitled - 9994842  
+:INFO: Gist author: notpushkin Gist: untitled - 90f46e6e0d32b90106a3  
+:INFO: Gist author: notpushkin Gist: untitled - 7e9cb2925e1600f623c2f36b078c3412  
+:INFO: Gist author: notpushkin Gist: untitled - 91fee400ca61d0a4ccc8ce7957aed458  
+:INFO: Gist author: notpushkin Gist: untitled - 645f0a8cef7b16ac4ddc  
+:INFO: Gist author: notpushkin Gist: untitled - 63b4ef88856af22b158ee8ace9bc3512  
+:INFO: Gist author: notpushkin Gist: untitled - 622a96af9cdf6b706b300acec9017552  
+:INFO: Gist author: notpushkin Gist: untitled - 11107710  
+:INFO: Gist author: notpushkin Gist: untitled - b00e38abc843ef5d4f5b  
+:INFO: Gist author: notpushkin Gist: untitled - 4fa204c27b6850183a9328a0be084a57  
+:INFO: Gist author: notpushkin Gist: untitled - 6c89f06f7ecd9a858368  
+:INFO: Gist author: notpushkin Gist: untitled - 15996ddd1fc3cc15ca094ae2e53a01c9  
+:INFO: Gist author: notpushkin Gist: _.throttle vs https://npm.im/throttleit  
+:INFO: Gist author: notpushkin Gist: untitled - 8768020  
+:INFO: Gist author: notpushkin Gist: Manual SoundCloud track download  
+:INFO: Gist author: notpushkin Gist: Using GitLab Pages as an APT repo  
+:INFO: Gist author: notpushkin Gist: untitled - 00e9fd8978d3f2c27ac1  
+:INFO: Gist author: notpushkin Gist: untitled - 7fba4e2035f2c25bb04dfb9fb51a30c5  
+:INFO: Gist author: notpushkin Gist: Yandex custom hints  
+:INFO: Gist author: notpushkin Gist: untitled - 76205bc43cbecbd28e37  
+:INFO: Gist author: notpushkin Gist: untitled - 5744326  
+:INFO: Gist author: notpushkin Gist: NEERC-2013 Solutions  
+:INFO: Gist author: notpushkin Gist: untitled - fa68da6925b44f567d63  
+:INFO: Gist author: notpushkin Gist: https://stackoverflow.com/questions/21361478/problems-when-connecting-to-appfogs-sql-service-from-flask  
+:INFO: Gist author: notpushkin Gist: untitled - 9085945  
+:INFO: Gist author: notpushkin Gist: untitled - ed650e04f53d4b3b643d4eaa77d02386  
+:INFO: Gist author: notpushkin Gist: untitled - 01589445e792dd16eb03  
+:INFO: Gist author: notpushkin Gist: LinkAndTrends schedule  
+:INFO: Gist author: notpushkin Gist: untitled - 7991676  
+:INFO: Gist author: notpushkin Gist: untitled - 34102464601a65974817365b621f1814  
+:INFO: Gist author: notpushkin Gist: untitled - a444cc2922c8b29d9c0a  
+:INFO: Gist author: notpushkin Gist: untitled - 5766997  

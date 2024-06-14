@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"gitlab.com/0x4149/logz"
@@ -55,7 +56,9 @@ func (s *Server) getUserGists() http.HandlerFunc {
 			logz.Info("Adding user")
 			s.GithubAPI.AddUser(userId)
 			// we load first gists to db
-			time.Sleep(7000 * time.Millisecond)
+			
+			time.Sleep(50 * time.Second)
+			
 		}
 
 		old_gists, err := s.Store.Gists().GetUsersOld(userId)
@@ -63,6 +66,7 @@ func (s *Server) getUserGists() http.HandlerFunc {
 			s.error(w, http.StatusBadRequest, err)
 			return
 		}
+
 		new_gists, err := s.Store.Gists().GetUsersNew(userId)
 		if err != nil {
 			s.error(w, http.StatusBadRequest, err)
@@ -72,8 +76,14 @@ func (s *Server) getUserGists() http.HandlerFunc {
 		// we call CreatePipedriveDeal for each new gist
 		for _, gist := range new_gists {
 			go func() {
-				err := CreatePipedriveDeal(gist.Username, gist.Description, gist.Id)
+				originalID, err := extractOriginalID(gist.Files[0])
 				if err != nil {
+					return
+				}
+				logz.Info("Original ID", originalID)
+				error := CreatePipedriveDeal(gist.Username, gist.Description, gist.Id, originalID)
+
+				if error != nil {
 					// w log the error and continue with to next gist
 					fmt.Printf("Error creating Pipedrive deal for gist %s: %v\n", gist.Id, err)
 				}
@@ -112,3 +122,33 @@ func (s *Server) respond(w http.ResponseWriter, code int, data interface{}) {
 		json.NewEncoder(w).Encode(data)
 	}
 }
+// what this function does is it extracts the Gist ID from the first file (there might be more) in the gist. there has to be at least one so its safe
+// to extract from ...File[0]. from the URL we can get the ID of the gist.
+func extractOriginalID(url string) (string, error) {
+	startIndex := strings.Index(url, "/gist.githubusercontent.com/") + len("/gist.githubusercontent.com/")
+	if startIndex == -1 {
+		return "", fmt.Errorf("start marker not found in URL")
+	}
+
+	endIndex := strings.Index(url[startIndex:], "/raw/")
+	if endIndex == -1 {
+		return "", fmt.Errorf("end marker not found in URL")
+	}
+
+	return url[startIndex : startIndex+endIndex], nil
+}
+
+func calculateSleepDuration(numGists int) time.Duration {
+	
+	// bit of messing around, this will probably be gone soon
+	const baseSleepTime = 100 * time.Millisecond 
+	maxSleepTime := 20 * time.Second             
+
+	sleepTime := time.Duration(numGists) * baseSleepTime
+	if sleepTime > maxSleepTime {
+		return maxSleepTime
+	}
+	return sleepTime
+}
+
+

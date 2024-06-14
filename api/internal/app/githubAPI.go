@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/google/go-github/github"
-	"github.com/google/uuid"
 	"gitlab.com/0x4149/logz"
 	"golang.org/x/oauth2"
 )
@@ -30,7 +29,7 @@ func NewGithubAPP(access_token string, s store.Store) *GitHubAPP {
 	return &GitHubAPP{
 		AccessToken: access_token,
 		Store:       s,
-		GistChannel: make(chan GistWorkerData),
+		GistChannel: make(chan GistWorkerData, 100), // buffered channel
 	}
 }
 
@@ -50,9 +49,6 @@ func (g *GitHubAPP) IsUserTracked(username string) bool {
 
 func (g *GitHubAPP) Start() {
 	logz.Info("Starting Github Scraper...")
-	//strat tracking them every 5 seconds
-	// ticker := time.NewTicker(100 * time.Second)
-	// defer ticker.Stop()
 
 	for gists := range g.GistChannel {
 		for _, gist := range gists.Gists {
@@ -60,25 +56,27 @@ func (g *GitHubAPP) Start() {
 				Username:    gists.Username,
 				Description: *gist.Description,
 			}
-			user_gist, err := g.Store.Gists().CreateGist(Gist)
-			if err != nil {
-				//logz.Error("Errora: ", err)
-			}
+			go func(k models.Gist) {
+				user_gist, err := g.Store.Gists().CreateGist(k)
+				if err != nil {
+					logz.Error("Errora: ", err)
+					return
+				}
 
-			if user_gist != nil {
-				for _, file := range gist.Files {
-					logz.Info(file)
-					File := models.File{
-						Id:       user_gist.Id,
-						Username: gists.Username,
-						Path:     *file.RawURL,
-					}
-					_, err := g.Store.Gists().CreateFile(File)
-					if err != nil {
-						logz.Error("Fail error:", err)
+				if user_gist != nil {
+					for _, file := range gist.Files {
+						File := models.File{
+							Id:       user_gist.Id,
+							Username: gists.Username,
+							Path:     *file.RawURL,
+						}
+						_, err := g.Store.Gists().CreateFile(File)
+						if err != nil {
+							logz.Error("Fail error:", err)
+						}
 					}
 				}
-			}
+			}(Gist)
 		}
 	}
 }
@@ -91,7 +89,7 @@ func (g *GitHubAPP) gistWorker(username string) {
 			Gists:    gists,
 		}
 		g.GistChannel <- data
-		time.Sleep(10800 * time.Second)
+		time.Sleep(10800 * time.Second) // Sleep for 3 hours
 	}
 }
 
@@ -115,15 +113,12 @@ func (g *GitHubAPP) getUserGists(username string) []*github.Gist {
 			log.Fatalf("Failed to fetch gists: %v", err)
 		}
 
-		//Process each gist
 		for _, gist := range gists {
-			// Check if description is nil
 			if gist.Description == nil || *gist.Description == "" {
-				description := "untitled - " + uuid.New().String()
+				description := "untitled - " + *gist.ID
 				gist.Description = &description
 			}
-			fmt.Println("Gist DESCRIPTION:", gist.Description)
-
+			fmt.Println("Gist DESCRIPTION:", *gist.Description)
 		}
 
 		allGists = append(allGists, gists...)

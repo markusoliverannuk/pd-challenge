@@ -3,7 +3,15 @@
 
 Hello! :)
 I want to take a moment of your time to explain how this application works and how the whole infrastructure is built. 
-I've divided this into 3 main sectors, Infrastructure, EC2 Startup scripts & Application code.
+I've divided this into 3 main sections:,
+ 
+1) Infrastructure<br>
+
+2) EC2 Startup scripts<br>
+
+3) Application code<br>
+
+4) Running the application locally<br>
 
 I'll try to move from the outermost layer all the way to the logic of our application.
 
@@ -23,7 +31,7 @@ The whole infrastructure for the API is written as code on <b>Terraform</b> for 
 • Auto Scaling Group<br>
 • EC2 instances running the latest version of the docker image from DockerHub, served through NGINX<br>
 <br>
-So by applying the code written for the infrastructure (I know what you might be asking "Where is TDD for Infrastructure?!". Yes, for this project I decided not to.), we are provisioning all the necessary resources on AWS and automatically fetching the necessary env variables from <b>Parameter Store</b>setting up the <b>Docker containers</b>, <b>requesting TLS certs and <b>configuring NGINX</b> with newly requested certs on all active EC2 machines.
+So by applying the code written for the infrastructure (I know what you might be asking "Where is TDD for Infrastructure?!". Yes, for this project I decided not to.), we are provisioning all the necessary resources on AWS and automatically fetching the necessary env variables from <b>Parameter Store</b>setting up the <b>Docker containers</b>, <b>requesting TLS certs</b> and <b>configuring NGINX</b> with newly requested certs on all active EC2 machines.
 
 So let's get into it..
 

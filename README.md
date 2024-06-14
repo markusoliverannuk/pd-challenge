@@ -3,9 +3,9 @@
 
 Hello! :)
 I want to take a moment of your time to explain how this application works and how the whole infrastructure is built. 
-I've divided this into 3 main sections:,
+I've divided this into 3 main sections:,<b>
  
-<b>1) Infrastructure<br>
+1) Infrastructure<br>
 
 2) EC2 Startup scripts<br>
 

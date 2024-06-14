@@ -5,13 +5,13 @@ Hello! :)
 I want to take a moment of your time to explain how this application works and how the whole infrastructure is built. 
 I've divided this into 3 main sections:,
  
-1) Infrastructure<br>
+<b>1) Infrastructure<br>
 
 2) EC2 Startup scripts<br>
 
 3) Application code<br>
 
-4) Running the application locally<br>
+4) Running the application locally<br></b>
 
 I'll try to move from the outermost layer all the way to the logic of our application.
 

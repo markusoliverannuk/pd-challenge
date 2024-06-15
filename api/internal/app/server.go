@@ -57,7 +57,7 @@ func (s *Server) getUserGists() http.HandlerFunc {
 			s.GithubAPI.AddUser(userId)
 			// we load first gists to db
 			
-			time.Sleep(50 * time.Second)
+			time.Sleep(15 * time.Second)
 			
 		}
 

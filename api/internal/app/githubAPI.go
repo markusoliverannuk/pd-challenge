@@ -89,7 +89,7 @@ func (g *GitHubAPP) gistWorker(username string) {
 			Gists:    gists,
 		}
 		g.GistChannel <- data
-		time.Sleep(10800 * time.Second) // Sleep for 3 hours
+		time.Sleep(10800 * time.Second) 
 	}
 }
 

@@ -1,9 +1,13 @@
 package main
 
 import (
+	"bufio"
 	server "challenge/internal/app"
 	"flag"
+	"fmt"
 	"log"
+	"os"
+	"strings"
 
 	"gitlab.com/0x4149/logz"
 )
@@ -15,6 +19,22 @@ func init() {
 }
 
 func main() {
+	pipedriveAPIKey := os.Getenv("PIPEDRIVE_API_KEY")
+	githubAT := os.Getenv("GITHUB_AT")
+
+	// Prompt for PIPEDRIVE_API_KEY if not set
+	if pipedriveAPIKey == "" {
+		fmt.Print("Enter your pipedrive api key: ")
+		pipedriveAPIKey = readInput()
+		os.Setenv("PIPEDRIVE_API_KEY", pipedriveAPIKey)
+	}
+
+	// Prompt for GITHUB_AT if not set
+	if githubAT == "" {
+		fmt.Print("Enter your Github Access Token: ")
+		githubAT = readInput()
+		os.Setenv("GITHUB_AT", githubAT)
+	}
 	flag.Parse()
 	logz.Verbos = true
 	config := server.NewConfig()
@@ -27,4 +47,10 @@ func main() {
 	// mux.HandleFunc("/", testHandler())
 	// http.ListenAndServe(":8080", mux)
 	log.Fatal(server.Start(config))
+}
+
+func readInput() string {
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	return strings.TrimSpace(input)
 }

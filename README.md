@@ -102,18 +102,18 @@ Next, we will pull the latest docker image of mannuk24/challenge from DockerHub 
 
 If you wish to run the application locally, I'll now show you how to do so.
 
-For local execution there are a few prerequisites:
+For local execution there are a few prerequisites:<br>
 
-• You have a valid Github Access Token
-• You have a valid Pipedrive API key
-• You have golang installed on your machine
+• You have a valid Github Access Token<br>
+• You have a valid Pipedrive API key<br>
+• You have golang installed on your machine<br>
 
 Here are the steps you should take for local execution:
 1) Clone this repository to a location on your machine using <b>git clone https://github.com/markusoliverannuk/challenge</b><br>
 2) cd inside the directory that you just pulled. If for example you clowned the repository under 'Documents' and the repository name is <b>challenge</b>, you can execute <b>cd challenge</b> from your Documents folder. Pointed this out just in case :)<br>
 3) Now make sure you have your Pipedrive API key and Github Access Token ready, we'll be using them quite soon.</br>
 4)Now depending if you want to use the graphical user interface as well, or just go off of the JSON responses you can choose to either run only the golang api, or also the React client.<br>
-5)Make sure you're currently inside the <b>challenge</br> directory and execute the following commands depending on your need.<br>
+5)Make sure you're currently inside the <b>challenge</b> directory and execute the following commands depending on your need.<br>
 Option A) "I only want access to the response from the API without graphical user interface" - In your terminal enter <b>sh local-startup-api.sh</b>.<br>
 - You should now be able the send POST requests to localhost:8050/user/{their Github username} and GET requests localhost:8050/trackedusers. You can do it either from a tool like Postman, curl, or for example from your web browser.<br>
 Option B) "I want to view the results through the GUI" - Open 2 terminals. Make  sure both of them have the current location as the <b>challenge</b> directory. In one terminal window execute <b>local-startup-api.sh</b>. In the second terminal window execute <b>sh local-startup-ui.sh</b>.<br>
@@ -123,3 +123,4 @@ Option B) "I want to view the results through the GUI" - Open 2 terminals. Make 
 When you now send a request, you will wait for a moment and then be presented with both "old gists" and "new gists" from the user. "new gists" are gists from that user that you haven't fetched before. "old gists" are gists that you have already seen through my application from the certain user.<br>
 PS: You can view all the users you're already tracking by either clicking the button "View tracked users" in the GUI or by sending a GET request to localhost:8050/trackedusers.
 
+If you have any questions regarding this project, then I'm always available via e-mail (<b>annukmarkusoliver@gmail.com</b>) or on LinkedIn.

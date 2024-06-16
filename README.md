@@ -3,7 +3,7 @@
 
 Hello! :)
 I want to take a moment of your time to explain how this application works and how the whole infrastructure is built. 
-I've divided this into 3 main sections:,<b>
+I've divided this into 4 main sections:,<b>
  
 1) Infrastructure<br>
 
@@ -18,7 +18,7 @@ I'll try to move from the outermost layer all the way to the logic of our applic
 
 ## 1. Infrastructure
 
-![App Screenshot](schemas/architecture.png)
+![App Screenshot](schemas/architectureschema.png)
 
 The whole infrastructure for the API is written as code on <b>Terraform</b> for <b>AWS</b>. It consists of:<br>
 • Hosted zones, records<br>

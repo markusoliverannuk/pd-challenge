@@ -72,6 +72,12 @@
   padding: 20px;
 }
 
+.tracked-users-title {
+ text-align: center;
+ color: white;
+ text-decoration: underline;
+}
+
 .username {
   font-size: 20px;
   margin-bottom: 20px;

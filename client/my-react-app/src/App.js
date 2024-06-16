@@ -4,36 +4,41 @@ import React, { useState } from 'react';
 
 function App() {
   const [username, setUsername] = useState('');
+  const [searchedUsername, setSearchedUsername] = useState(''); // State to hold the searched username
   const [oldGists, setOldGists] = useState(null);
   const [newGists, setNewGists] = useState(null);
-  const [loadingSearch, setLoadingSearch] = useState(false); // State for search loading
-  const [loadingTrackedUsers, setLoadingTrackedUsers] = useState(false); // State for tracked users loading
+  const [loadingSearch, setLoadingSearch] = useState(false);
+  const [loadingTrackedUsers, setLoadingTrackedUsers] = useState(false);
   const [showContainer, setShowContainer] = useState(false);
   const [trackedUsers, setTrackedUsers] = useState(null);
+  const [newGistCount, setNewGistCount] = useState(0);
 
   const handleSearch = async () => {
-    setLoadingSearch(true); // Start loading
+    setLoadingSearch(true);
     setShowContainer(true);
+    setSearchedUsername(username); // Update the searched username state
+
     try {
-      const trimmedUsername = username.trim(); // Trim whitespace from username
-      const response = await axios.get(`https://api-challenge-v0.techwithmarkus.com/user/${trimmedUsername}`);
+      const trimmedUsername = username.trim(); // Just in case trimming white spaces
+      const response = await axios.get(`http://localhost:8050/user/${trimmedUsername}`);
       setOldGists(response.data.old_gists);
       setNewGists(response.data.new_gists);
+      setNewGistCount(response.data.new_gists.length);
     } catch (error) {
       console.error('Error fetching gists:', error);
     }
-    setLoadingSearch(false); // Stop loading
+    setLoadingSearch(false);
   };
 
   const handleShowTrackedUsers = async () => {
-    setLoadingTrackedUsers(true); // Start loading
+    setLoadingTrackedUsers(true);
     try {
-      const response = await axios.get(`https://api-challenge-v0.techwithmarkus.com/trackedusers`);
-      setTrackedUsers(response.data); 
+      const response = await axios.get(`http://localhost:8050/trackedusers`);
+      setTrackedUsers(response.data);
     } catch (error) {
       console.error('Error fetching tracked users:', error);
     }
-    setLoadingTrackedUsers(false); // Stop loading
+    setLoadingTrackedUsers(false);
   };
 
   return (
@@ -56,14 +61,14 @@ function App() {
         </button>
       </div>
       {loadingSearch || loadingTrackedUsers ? (
-        <p className="loadingtext">Loading... (Please allow up to 10 seconds)</p> // Display loading indicator
+        <p className="loadingtext">Loading...</p>
       ) : (
         <>
           {showContainer && (
             <div className="gists-container">
               {newGists !== null && (
                 <div className="user-info">
-                  <h2 className="username">Created deals for the following gists from {username}</h2>
+                  <h2 className="username">Created deals for the following {newGistCount} new gists from {searchedUsername}</h2>
                   <div className="gists-list">
                     {newGists.length === 0 ? (
                       <p className="no-gists">No new gists</p>
@@ -90,7 +95,7 @@ function App() {
               )}
               {oldGists !== null && (
                 <div className="user-info">
-                  <h2 className="username">Gists from {username} that you've already seen & created deals for</h2>
+                  <h2 className="username">Gists from {searchedUsername} that you've already seen & created deals for</h2>
                   <div className="gists-list">
                     {oldGists.length === 0 ? (
                       <p className="no-gists">No old gists</p>
@@ -119,7 +124,7 @@ function App() {
           )}
           {trackedUsers && (
             <div className="tracked-users-container">
-              <h2>Previously tracked users:</h2>
+              <h2 className='tracked-users-title'>Previously tracked users:</h2>
               <ul>
                 {trackedUsers.map((user, index) => (
                   <li key={index}>{user}</li>
@@ -145,7 +150,6 @@ function App() {
         <img src="/schemas/insidemachine.png" alt="instances" className="media-images" />
         <p>Hopefully these illustrations gave you somewhat of an understanding of how it works. As I said though, a much more detailed explanation is in the README file located inside my Github Repository.</p>
         <p className='whitetextauthor'>- Markus</p>
-
       </div>
     </div>
   );

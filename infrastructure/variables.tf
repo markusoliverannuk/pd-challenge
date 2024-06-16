@@ -1,5 +1,5 @@
 variable "aws_region" {
-    default = "us-east-1"
+    default = "eu-north-1"
     description = "where we create our resources"
 }
 
@@ -21,7 +21,7 @@ variable "hosted_zone_id" {
 
 variable "record_name" {
   description = "hosted zone record name / subdomain value for certs"
-  default     = "api-scraper.techwithmarkus.com"
+  default     = "api-challenge-v2.techwithmarkus.com"
 
 }
 

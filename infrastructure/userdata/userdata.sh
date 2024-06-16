@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #we will give a moment for the load balancer and target group to be configured, we can also use a while true loop to check, but this seems to work better
-sleep 90
+sleep 120
 
 #installing the awscli
 sudo snap install aws-cli --classic
@@ -24,7 +24,7 @@ sudo apt-get install -y nginx certbot python3-certbot-nginx docker.io
 sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
 server {
     listen 80;
-    server_name api-scraper.techwithmarkus.com;
+    server_name api-challenge-v2.techwithmarkus.com;
 
     location /.well-known/acme-challenge/ {
         root /var/www/html;
@@ -47,12 +47,12 @@ sudo systemctl reload nginx
 
 #requesting certs
 
-sudo certbot certonly --webroot -w /var/www/html -d api-scraper.techwithmarkus.com --non-interactive --agree-tos -m annukmarkusoliver@gmail.com
+sudo certbot certonly --webroot -w /var/www/html -d api-challenge-v2.techwithmarkus.com --non-interactive --agree-tos -m annukmarkusoliver@gmail.com
 
 sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
 server {
     listen 80;
-    server_name api-scraper.techwithmarkus.com;
+    server_name api-challenge-v2.techwithmarkus.com;
 
     location /.well-known/acme-challenge/ {
         root /var/www/html;
@@ -66,10 +66,10 @@ server {
 
 server {
     listen 443 ssl;
-    server_name api-scraper.techwithmarkus.com;
+    server_name api-challenge-v2.techwithmarkus.com;
 
-    ssl_certificate /etc/letsencrypt/live/api-scraper.techwithmarkus.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api-scraper.techwithmarkus.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/api-challenge-v2.techwithmarkus.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api-challenge-v2.techwithmarkus.com/privkey.pem;
 
     location / {
         proxy_pass http://localhost:8050;

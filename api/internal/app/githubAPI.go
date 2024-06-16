@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"sync"
 	"time"
 
 	"github.com/google/go-github/github"
@@ -18,11 +19,13 @@ type GitHubAPP struct {
 	TrackedUsers []string
 	Store        store.Store
 	GistChannel  chan GistWorkerData
+	AddWG        *sync.WaitGroup
 }
 
 type GistWorkerData struct {
 	Username string
 	Gists    []*github.Gist
+	FirstAdd bool
 }
 
 func NewGithubAPP(access_token string, s store.Store) *GitHubAPP {
@@ -30,11 +33,13 @@ func NewGithubAPP(access_token string, s store.Store) *GitHubAPP {
 		AccessToken: access_token,
 		Store:       s,
 		GistChannel: make(chan GistWorkerData, 100), // buffered channel
+		AddWG:       &sync.WaitGroup{},
 	}
 }
 
 func (g *GitHubAPP) AddUser(username string) {
 	g.TrackedUsers = append(g.TrackedUsers, username)
+	g.AddWG.Add(1)
 	go g.gistWorker(username)
 }
 
@@ -56,40 +61,56 @@ func (g *GitHubAPP) Start() {
 				Username:    gists.Username,
 				Description: *gist.Description,
 			}
-			go func(k models.Gist) {
-				user_gist, err := g.Store.Gists().CreateGist(k)
-				if err != nil {
-					logz.Error("Errora: ", err)
-					return
-				}
 
-				if user_gist != nil {
-					for _, file := range gist.Files {
-						File := models.File{
-							Id:       user_gist.Id,
-							Username: gists.Username,
-							Path:     *file.RawURL,
-						}
-						_, err := g.Store.Gists().CreateFile(File)
-						if err != nil {
-							logz.Error("Fail error:", err)
-						}
+			user_gist, err := g.Store.Gists().CreateGist(Gist)
+			if err != nil {
+				logz.Info("Gist already exists and has been tracked before,", err)
+				// if gists.FirstAdd {
+				// 	g.AddWG.Done()
+				// }
+				continue
+			}
+
+			if user_gist != nil {
+				for _, file := range gist.Files {
+					File := models.File{
+						Id:       user_gist.Id,
+						Username: gists.Username,
+						Path:     *file.RawURL,
+					}
+					_, err := g.Store.Gists().CreateFile(File)
+					if err != nil {
+						logz.Error("Fail error:", err)
 					}
 				}
-			}(Gist)
+			}
+
+		}
+
+		if gists.FirstAdd {
+			g.AddWG.Done()
 		}
 	}
 }
 
 func (g *GitHubAPP) gistWorker(username string) {
+	gists := g.getUserGists(username)
+	data := GistWorkerData{
+		Username: username,
+		Gists:    gists,
+		FirstAdd: true,
+	}
+	g.GistChannel <- data
+	time.Sleep(10800 * time.Second)
 	for {
 		gists := g.getUserGists(username)
 		data := GistWorkerData{
 			Username: username,
 			Gists:    gists,
+			FirstAdd: false,
 		}
 		g.GistChannel <- data
-		time.Sleep(10800 * time.Second) 
+		time.Sleep(10800 * time.Second)
 	}
 }
 

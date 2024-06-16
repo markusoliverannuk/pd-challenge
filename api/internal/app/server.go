@@ -9,7 +9,6 @@ import (
 	"log"
 	"net/http"
 	"strings"
-	"time"
 
 	"gitlab.com/0x4149/logz"
 )
@@ -56,9 +55,9 @@ func (s *Server) getUserGists() http.HandlerFunc {
 			logz.Info("Adding user")
 			s.GithubAPI.AddUser(userId)
 			// we load first gists to db
-			
-			time.Sleep(15 * time.Second)
-			
+			s.GithubAPI.AddWG.Wait()
+			// time.Sleep(15 * time.Second)
+
 		}
 
 		old_gists, err := s.Store.Gists().GetUsersOld(userId)
@@ -78,14 +77,18 @@ func (s *Server) getUserGists() http.HandlerFunc {
 			go func() {
 				originalID, err := extractOriginalID(gist.Files[0])
 				if err != nil {
+					s.error(w, http.StatusBadRequest, err)
+
 					return
 				}
-				logz.Info("Original ID", originalID)
-				error := CreatePipedriveDeal(gist.Username, gist.Description, gist.Id, originalID)
+				err = CreatePipedriveDeal(gist.Username, gist.Description, gist.Id, originalID)
 
-				if error != nil {
+				if err != nil {
+
 					// w log the error and continue with to next gist
 					fmt.Printf("Error creating Pipedrive deal for gist %s: %v\n", gist.Id, err)
+					s.error(w, http.StatusBadRequest, err)
+					return
 				}
 			}()
 		}
@@ -122,6 +125,7 @@ func (s *Server) respond(w http.ResponseWriter, code int, data interface{}) {
 		json.NewEncoder(w).Encode(data)
 	}
 }
+
 // what this function does is it extracts the Gist ID from the first file (there might be more) in the gist. there has to be at least one so its safe
 // to extract from ...File[0]. from the URL we can get the ID of the gist.
 func extractOriginalID(url string) (string, error) {
@@ -137,18 +141,3 @@ func extractOriginalID(url string) (string, error) {
 
 	return url[startIndex : startIndex+endIndex], nil
 }
-
-func calculateSleepDuration(numGists int) time.Duration {
-	
-	// bit of messing around, this will probably be gone soon
-	const baseSleepTime = 100 * time.Millisecond 
-	maxSleepTime := 20 * time.Second             
-
-	sleepTime := time.Duration(numGists) * baseSleepTime
-	if sleepTime > maxSleepTime {
-		return maxSleepTime
-	}
-	return sleepTime
-}
-
-

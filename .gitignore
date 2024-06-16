@@ -1,5 +1,9 @@
 .DS_Store
 infrastructure/terraform.tfstate
-infrastructure/terraform.tfstate.backup.terraform/
+infrastructure/terraform.tfstate.backup
 *.terraform
 .terraform/
+infrastructure/.terraform.lock.hcl
+client/my-react-app/node_modules
+api/.env
+api/build/*

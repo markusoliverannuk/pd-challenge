@@ -22,14 +22,13 @@ func main() {
 	pipedriveAPIKey := os.Getenv("PIPEDRIVE_API_KEY")
 	githubAT := os.Getenv("GITHUB_AT")
 
-	// Prompt for PIPEDRIVE_API_KEY if not set
+
 	if pipedriveAPIKey == "" {
 		fmt.Print("Enter your pipedrive api key: ")
 		pipedriveAPIKey = readInput()
 		os.Setenv("PIPEDRIVE_API_KEY", pipedriveAPIKey)
 	}
 
-	// Prompt for GITHUB_AT if not set
 	if githubAT == "" {
 		fmt.Print("Enter your Github Access Token: ")
 		githubAT = readInput()

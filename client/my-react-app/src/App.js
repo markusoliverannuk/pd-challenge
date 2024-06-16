@@ -20,7 +20,7 @@ function App() {
 
     try {
       const trimmedUsername = username.trim(); // Just in case trimming white spaces
-      const response = await axios.get(`http://localhost:8050/user/${trimmedUsername}`);
+      const response = await axios.get(`https://api-challenge-v2.techwithmarkus.com/user/${trimmedUsername}`);
       setOldGists(response.data.old_gists);
       setNewGists(response.data.new_gists);
       setNewGistCount(response.data.new_gists.length);
@@ -33,7 +33,7 @@ function App() {
   const handleShowTrackedUsers = async () => {
     setLoadingTrackedUsers(true);
     try {
-      const response = await axios.get(`http://localhost:8050/trackedusers`);
+      const response = await axios.get(`https://api-challenge-v2.techwithmarkus.com/trackedusers`);
       setTrackedUsers(response.data);
     } catch (error) {
       console.error('Error fetching tracked users:', error);

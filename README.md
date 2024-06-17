@@ -109,7 +109,7 @@ The graphical user interface sending requests to our defined endpoints:
 So the client application provides a web interface where users can input a GitHub username.<br>
 Upon entering the username and submitting the form, the application makes a request to the backend to fetch the user's gists and adding the user to 'Tracked users'.<br>
 There are two main API endpoints:<br>
-/user/{id}: Fetches the gists for the specified GitHub user and creates Pipedrive deals for any new gists since the last check.
+/user/{id}: Fetches the gists for the specified GitHub user and creates Pipedrive deals for any new gists since the last check.<br>
 /trackedusers: Displays a list of previously tracked GitHub users.<br> <br>
 
 So we utilize the GitHub API to retrieve the gists of the specified user.<br>

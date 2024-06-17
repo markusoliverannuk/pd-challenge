@@ -100,6 +100,36 @@ Next, we will pull the latest docker image of mannuk24/challenge from DockerHub 
 ![Inside machine](schemas/insidemachine.png)
 ![Pipedrive dashboard](schemas/pipedrive.png)
 
+## 3. Application Logic
+
+The core functionality of this application is to check for a user's publicly available GitHub gists and create corresponding deals in Pipedrive for each gist. Here's a bit of info about how it all works: <br>
+
+The graphical user interface sending requests to our defined endpoints:
+
+So the client application provides a web interface where users can input a GitHub username.<br>
+Upon entering the username and submitting the form, the application makes a request to the backend to fetch the user's gists and adding the user to 'Tracked users'.<br>
+There are two main API endpoints:<br>
+/user/{id}: Fetches the gists for the specified GitHub user and creates Pipedrive deals for any new gists since the last check.
+/trackedusers: Displays a list of previously tracked GitHub users.<br> <br>
+
+So we utilize the GitHub API to retrieve the gists of the specified user.<br>
+To handle large numbers of gists efficiently, we fetch the gists in pages, with up to 100 gists per page. (That's the max amount per page allowed right now)<br>
+And so the logic ensures that all gists are fetched by iterating through the pages until no more pages are left.<br><br>
+
+For each new gist found, the application creates a deal in Pipedrive.
+So the deal creation process includes extracting the gist's ID, description, and associated files.<br>
+For the Pipedrive API I currently had to set a rate limiter to 10 req/sec which is in the limit of Pipedrives limit for my plan, 20req/s.<br>
+The application ensures that each new gist is logged and a deal is created only if it hasn't been processed before.<br>
+
+The application uses a local database to store information about fetched gists.
+It distinguishes between old and new gists, ensuring that only new gists trigger the creation of Pipedrive deals.
+The database also keeps track of unique GitHub usernames that have been scanned.<br>
+
+To improve efficiency, the application uses Go's concurrency features.<br><br>
+
+The application is also designed to run periodic checks for new gists every 3 hours.
+This ensures that any new gists created by the user are processed and used in deal creation.
+
 ## 4. Running the application locally
 
 If you wish to run the application locally, I'll now show you how to do so.

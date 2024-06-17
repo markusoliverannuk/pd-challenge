@@ -15,12 +15,12 @@ I've divided this into 4 main sections:,<b>
 
 I'll try to move from the outermost layer all the way to the logic of our application.
 
-User interface panel running on <b>https://challenge.techwithmarkus.com></b> which sends request to <b>https://api-challenge-v2.techwithmarkus.com</b>.
+User interface panel running on <b>https://challenge.techwithmarkus.com</b> which sends request to <b>https://api-challenge-v2.techwithmarkus.com</b>.
 
 
 ## 1. Infrastructure
 
-![App Screenshot](schemas/architectureschema.png)
+![App Screenshot](schemas/architecture.png)
 
 The whole infrastructure for the API is written as code on <b>Terraform</b> for <b>AWS</b>. It consists of:<br>
 • Hosted zones, records<br>
